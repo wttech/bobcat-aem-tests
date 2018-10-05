@@ -2,19 +2,28 @@ package com.cognifide.qa.bb.aem.tests.pages;
 
 import com.cognifide.qa.bb.aem.core.pages.AemAuthorPage;
 import com.cognifide.qa.bb.qualifier.PageObject;
+import com.cognifide.qa.bb.utils.WebElementUtils;
+import com.google.inject.Inject;
+import javax.inject.Named;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 @PageObject
 public class TestPage extends AemAuthorPage {
 
-  private final static String FULL_URL = "/content/we-retail/us/en.html";
+  @Inject
+  private WebElementUtils webElementUtils;
 
-  @Override
-  public String getFullUrl() {
-    return FULL_URL;
-  }
+  @Inject
+  @Named("page.title.timeout")
+  protected int pageTitleTimeout;
 
-  @Override
   public String getTitle() {
     return "English";
   }
+
+  public boolean isDisplayed() {
+    return webElementUtils
+        .isConditionMet(ExpectedConditions.titleIs(getTitle()), pageTitleTimeout);
+  }
+
 }

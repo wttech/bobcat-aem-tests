@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import com.cognifide.qa.bb.RunWithJunit5;
 import com.cognifide.qa.bb.aem.core.login.AemAuthenticationController;
+import com.cognifide.qa.bb.aem.core.pages.AuthorPageFactory;
 import com.cognifide.qa.bb.aem.tests.GuiceModule;
 import com.cognifide.qa.bb.aem.tests.pages.TestPage;
 import com.cognifide.qa.bb.junit5.guice.Modules;
@@ -24,20 +25,23 @@ public class AuthorizationTest {
   private AemAuthenticationController aemAuthenticationController;
 
   @Inject
-  TestPage testpage;
+  private AuthorPageFactory authorPageFactory;
+
 
   @Test
   @Story("Login to AEM and open Test page")
   @Description("Login to author instance and open test page")
   public void loginTest() {
+    TestPage testpage = authorPageFactory.create("/content/we-retail/us/en.html", TestPage.class);
     aemAuthenticationController.login();
-    assertTrue(testpage.open().isDisplayed());
+    assertTrue(((TestPage) testpage.open()).isDisplayed());
   }
 
   @Test
   @Story("Login to AEM and open Test page")
   @Description("Login to author instance and open test page in one step")
   public void loginAndOpenTest() {
+    TestPage testpage = authorPageFactory.create("/content/we-retail/us/en.html", TestPage.class);
     aemAuthenticationController.login(testpage);
     assertTrue(testpage.isDisplayed());
   }
