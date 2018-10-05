@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:mix="http://www.jcp.org/jcr/mix/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0" xmlns:rep="internal"
+    jcr:primaryType="cq:Page">
+    <jcr:content
+        cq:template="/conf/we-retail/settings/wcm/templates/content-page"
+        jcr:description="Test page"
+        jcr:primaryType="cq:PageContent"
+        jcr:title="English"
+        sling:resourceType="weretail/components/structure/page"
+        browserTitle="Test page"
+        pageTitle="Test page">
+        <image jcr:primaryType="nt:unstructured"/>
+        <content
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="wcm/foundation/components/responsivegrid">
+        </content>
+    </jcr:content>
+</jcr:root>
