@@ -4,10 +4,10 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import com.cognifide.qa.bb.RunWithJunit5;
 import com.cognifide.qa.bb.aem.core.login.AemAuthenticationController;
-import com.cognifide.qa.bb.aem.core.pages.AuthorPageFactory;
 import com.cognifide.qa.bb.aem.tests.GuiceModule;
 import com.cognifide.qa.bb.aem.tests.pages.TestPage;
 import com.cognifide.qa.bb.junit5.guice.Modules;
+import com.cognifide.qa.bb.page.BobcatPageFactory;
 import com.google.inject.Inject;
 import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
@@ -25,14 +25,14 @@ public class AuthorizationTest {
   private AemAuthenticationController aemAuthenticationController;
 
   @Inject
-  private AuthorPageFactory authorPageFactory;
+  private BobcatPageFactory bobcatPageFactory;
 
 
   @Test
   @Story("Login to AEM and open Test page")
   @Description("Login to author instance and open test page")
   public void loginTest() {
-    TestPage testpage = authorPageFactory.create("/content/we-retail/us/en.html", TestPage.class);
+    TestPage testpage = bobcatPageFactory.create("/content/we-retail/us/en.html", TestPage.class);
     aemAuthenticationController.login();
     assertTrue(((TestPage) testpage.open()).isDisplayed());
   }
@@ -41,7 +41,7 @@ public class AuthorizationTest {
   @Story("Login to AEM and open Test page")
   @Description("Login to author instance and open test page in one step")
   public void loginAndOpenTest() {
-    TestPage testpage = authorPageFactory.create("/content/we-retail/us/en.html", TestPage.class);
+    TestPage testpage = bobcatPageFactory.create("/content/we-retail/us/en.html", TestPage.class);
     aemAuthenticationController.login(testpage);
     assertTrue(testpage.isDisplayed());
   }

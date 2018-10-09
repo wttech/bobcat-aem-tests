@@ -8,7 +8,7 @@ import javax.inject.Named;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 @PageObject
-public class TestPage extends AemAuthorPage {
+public class TestPage extends AemAuthorPage<TestPage> {
 
   @Inject
   private WebElementUtils webElementUtils;
