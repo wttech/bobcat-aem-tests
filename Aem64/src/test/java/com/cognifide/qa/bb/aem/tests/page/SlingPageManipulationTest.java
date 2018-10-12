@@ -1,6 +1,7 @@
 package com.cognifide.qa.bb.aem.tests.page;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import com.cognifide.qa.bb.RunWithJunit5;
 import com.cognifide.qa.bb.aem.core.pages.AemPageManipulationException;
@@ -44,10 +45,11 @@ public class SlingPageManipulationTest extends AbstractAemAuthorTest {
             SlingTestDataXMLBuilder.buildSlingTestData("testpages/pageTest.xml")));
     TestPage testPage = bobcatPageFactory.create(TEST_PAGE_PATH + ".html", TestPage.class);
     testPage.open();
+    assertTrue(testPage.isDisplayed());
     aemTestPageControler
         .deleteTestPage(new SlingTestPageData(TEST_PAGE_PATH, null));
     testPage.open();
-    assertFalse(testPage.isDisplayed());
+    assertTrue(testPage.isNotAvailable());
   }
 
 }
