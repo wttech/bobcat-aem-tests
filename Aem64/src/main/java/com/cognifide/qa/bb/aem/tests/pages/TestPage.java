@@ -17,8 +17,14 @@ public class TestPage extends AemAuthorPage<TestPage> {
   @Named("page.title.timeout")
   protected int pageTitleTimeout;
 
+  private String title = "English";
+
   public String getTitle() {
-    return "English";
+    return title;
+  }
+
+  public void setTitle(String title) {
+    this.title = title;
   }
 
   public boolean isDisplayed() {
@@ -26,4 +32,8 @@ public class TestPage extends AemAuthorPage<TestPage> {
         .isConditionMet(ExpectedConditions.titleIs(getTitle()), pageTitleTimeout);
   }
 
+  public boolean isNotAvailable() {
+    return webElementUtils
+        .isConditionMet(ExpectedConditions.titleContains("404 Resource"), pageTitleTimeout);
+  }
 }

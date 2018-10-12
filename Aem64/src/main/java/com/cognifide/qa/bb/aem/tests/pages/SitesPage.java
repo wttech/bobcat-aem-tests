@@ -13,9 +13,9 @@ public class SitesPage extends AemAuthorPage<SitesPage> {
   @Inject
   private SiteAdminController siteAdminController;
 
-  public void createPage(String name) {
+  public void createPage(String template, String title, String name) {
     siteAdminController.getSiteAdminAction(CreatePageAction.PAGE_CREATE)
-        .action(new CreatePageActionData(name));
+        .action(new CreatePageActionData(template,title,name));
   }
 
 }

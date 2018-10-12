@@ -1,5 +1,6 @@
 package com.cognifide.qa.bb.aem.tests.siteadmin;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import com.cognifide.qa.bb.RunWithJunit5;
@@ -28,6 +29,10 @@ public class SiteAdminControllerTest extends AbstractAemAuthorTest {
 
   private final static String PAGE_TO_CREATE_NAME = "siteadmintestpage";
 
+  private final static String PAGE_TO_CREATE_TEMPLATE = "Content Page";
+
+  private final static String PAGE_TO_CREATE_TITLE = "Site Admin Test Page";
+
   private static final String FULL_PAGE_PATH = "/content/we-retail/us/en/" + PAGE_TO_CREATE_NAME;
 
   private static final String SITES_PAGE_PATH = "/sites.html/content/we-retail/us/en";
@@ -42,9 +47,14 @@ public class SiteAdminControllerTest extends AbstractAemAuthorTest {
   @Story("Create test page from sites.html")
   @Description("Create test page using create action from site admin")
   public void createPageActionTest() {
+
+    TestPage testPage = bobcatPageFactory.create(FULL_PAGE_PATH+ ".html", TestPage.class);
+    testPage.setTitle(PAGE_TO_CREATE_TITLE);
+    assertTrue(testPage.open().isNotAvailable());
+
     SitesPage sitesPage = bobcatPageFactory.create(SITES_PAGE_PATH, SitesPage.class);
-    sitesPage.open().createPage(PAGE_TO_CREATE_NAME);
-    TestPage testPage = bobcatPageFactory.create(FULL_PAGE_PATH, TestPage.class);
+    sitesPage.open().createPage(PAGE_TO_CREATE_TEMPLATE, PAGE_TO_CREATE_TITLE, PAGE_TO_CREATE_NAME);
+
     assertTrue(testPage.open().isDisplayed());
   }
 
