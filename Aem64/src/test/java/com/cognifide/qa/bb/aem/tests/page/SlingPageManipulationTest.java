@@ -29,12 +29,6 @@ public class SlingPageManipulationTest extends AbstractAemAuthorTest {
 
   private static final String TEST_PAGE_PATH = "/content/we-retail/us/en/test";
 
-  @Inject
-  private AemTestPageControler aemTestPageControler;
-
-  @Inject
-  private BobcatPageFactory bobcatPageFactory;
-
   @Test
   @Story("Create and delete test page")
   @Description("Create and delete test page using sling controller")
