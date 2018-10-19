@@ -3,12 +3,12 @@ package com.cognifide.qa.bb.aem.tests.components;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import com.cognifide.qa.bb.RunWithJunit5;
+import com.cognifide.qa.bb.aem.core.component.action.ComponentController;
+import com.cognifide.qa.bb.aem.core.component.actions.EditComponentAction;
+import com.cognifide.qa.bb.aem.core.component.actions.EditComponentActonData;
 import com.cognifide.qa.bb.aem.core.pages.AemPageManipulationException;
 import com.cognifide.qa.bb.aem.core.pages.sling.SlingTestDataXMLBuilder;
 import com.cognifide.qa.bb.aem.core.pages.sling.SlingTestPageData;
-import com.cognifide.qa.bb.aem.core.sitepanel.EditComponentAction;
-import com.cognifide.qa.bb.aem.core.sitepanel.EditComponentActonData;
-import com.cognifide.qa.bb.aem.core.sitepanel.SidePanelController;
 import com.cognifide.qa.bb.aem.tests.AbstractAemAuthorTest;
 import com.cognifide.qa.bb.aem.tests.GuiceModule;
 import com.cognifide.qa.bb.aem.tests.pages.TestPage;
@@ -31,7 +31,7 @@ public class EditComponentTest extends AbstractAemAuthorTest {
   private final static String PAGE_TO_CREATE_TITLE = "testPage";
 
   @Inject
-  private SidePanelController sidePanelController;
+  private ComponentController componentController;
 
   @BeforeEach
   public void createTestPage() throws AemPageManipulationException {
@@ -41,11 +41,13 @@ public class EditComponentTest extends AbstractAemAuthorTest {
   }
 
   @Test
-  public void editComponentTest(){
-    TestPage testPage = bobcatPageFactory.create("/editor.html" + TEST_PAGE_PATH+ ".html", TestPage.class);
+  public void editComponentTest() {
+    TestPage testPage = bobcatPageFactory
+        .create("/editor.html" + TEST_PAGE_PATH + ".html", TestPage.class);
     testPage.setTitle(PAGE_TO_CREATE_TITLE);
     assertTrue(testPage.open().isDisplayed());
-    sidePanelController.getSidePanelAction(EditComponentAction.EDIT_COMPONENT).action(new EditComponentActonData());
+    componentController.getSidePanelAction(EditComponentAction.EDIT_COMPONENT)
+        .action(new EditComponentActonData("container", "Text", 0));
   }
 
   @AfterEach
