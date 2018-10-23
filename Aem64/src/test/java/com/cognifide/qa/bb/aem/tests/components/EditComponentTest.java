@@ -4,8 +4,11 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import com.cognifide.qa.bb.RunWithJunit5;
 import com.cognifide.qa.bb.aem.core.component.action.ComponentController;
+import com.cognifide.qa.bb.aem.core.component.actions.ConfigureComponentAction;
+import com.cognifide.qa.bb.aem.core.component.actions.ConfigureComponentActonData;
 import com.cognifide.qa.bb.aem.core.component.actions.EditComponentAction;
 import com.cognifide.qa.bb.aem.core.component.actions.EditComponentActonData;
+import com.cognifide.qa.bb.aem.core.component.configuration.ResourceFileLocation;
 import com.cognifide.qa.bb.aem.core.pages.AemPageManipulationException;
 import com.cognifide.qa.bb.aem.core.pages.sling.SlingTestDataXMLBuilder;
 import com.cognifide.qa.bb.aem.core.pages.sling.SlingTestPageData;
@@ -41,13 +44,14 @@ public class EditComponentTest extends AbstractAemAuthorTest {
   }
 
   @Test
-  public void editComponentTest() {
+  public void configureComponentTest() {
     TestPage testPage = bobcatPageFactory
         .create("/editor.html" + TEST_PAGE_PATH + ".html", TestPage.class);
     testPage.setTitle(PAGE_TO_CREATE_TITLE);
     assertTrue(testPage.open().isDisplayed());
-    componentController.getSidePanelAction(EditComponentAction.EDIT_COMPONENT)
-        .action(new EditComponentActonData("container", "Text", 0));
+    componentController.getSidePanelAction(ConfigureComponentAction.CONFIGURE_COMPONENT_ACTION)
+        .action(new ConfigureComponentActonData("container", "Text", 0, new ResourceFileLocation("component-configs/text.yaml")));
+    System.out.println("gg");
   }
 
   @AfterEach
