@@ -1,19 +1,20 @@
 package com.cognifide.qa.bb.aem.tests.components;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import com.cognifide.qa.bb.RunWithJunit5;
 import com.cognifide.qa.bb.aem.core.component.action.ComponentController;
 import com.cognifide.qa.bb.aem.core.component.actions.ConfigureComponentAction;
 import com.cognifide.qa.bb.aem.core.component.actions.ConfigureComponentActonData;
-import com.cognifide.qa.bb.aem.core.component.actions.EditComponentAction;
-import com.cognifide.qa.bb.aem.core.component.actions.EditComponentActonData;
 import com.cognifide.qa.bb.aem.core.component.configuration.ResourceFileLocation;
 import com.cognifide.qa.bb.aem.core.pages.AemPageManipulationException;
 import com.cognifide.qa.bb.aem.core.pages.sling.SlingTestDataXMLBuilder;
 import com.cognifide.qa.bb.aem.core.pages.sling.SlingTestPageData;
 import com.cognifide.qa.bb.aem.tests.AbstractAemAuthorTest;
 import com.cognifide.qa.bb.aem.tests.GuiceModule;
+import com.cognifide.qa.bb.aem.tests.pageobjects.TextComponent;
+import com.cognifide.qa.bb.aem.tests.pageobjects.TextComponentImpl;
 import com.cognifide.qa.bb.aem.tests.pages.TestPage;
 import com.cognifide.qa.bb.junit5.guice.Modules;
 import com.google.inject.Inject;
@@ -26,12 +27,13 @@ import org.junit.jupiter.api.Test;
 @RunWithJunit5
 @Modules(GuiceModule.class)
 @Epic("AEM 6.4 Base Tests")
-@Feature("Component Tests")
+@Feature("TextComponent Tests")
 public class EditComponentTest extends AbstractAemAuthorTest {
 
   private static final String TEST_PAGE_PATH = "/content/we-retail/us/en/editcomponenttestpage";
 
   private final static String PAGE_TO_CREATE_TITLE = "testPage";
+  private static final String TEXT_COMPONENT_HTML = "<p>test test test</p>";
 
   @Inject
   private ComponentController componentController;
@@ -50,8 +52,10 @@ public class EditComponentTest extends AbstractAemAuthorTest {
     testPage.setTitle(PAGE_TO_CREATE_TITLE);
     assertTrue(testPage.open().isDisplayed());
     componentController.getSidePanelAction(ConfigureComponentAction.CONFIGURE_COMPONENT_ACTION)
-        .action(new ConfigureComponentActonData("container", "Text", 0, new ResourceFileLocation("component-configs/text.yaml")));
-    System.out.println("gg");
+        .action(new ConfigureComponentActonData("container", "Text", 0,
+            new ResourceFileLocation("component-configs/text.yaml")));
+    TextComponentImpl content =(TextComponentImpl) testPage.getContent(TextComponent.class, 0);
+    assertEquals(TEXT_COMPONENT_HTML,content.getInnerHTML().trim());
   }
 
   @AfterEach
