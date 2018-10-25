@@ -67,8 +67,6 @@ public class ConfigureComponentTest extends AbstractAemAuthorTest {
     componentController.getSidePanelAction(ConfigureComponentAction.CONFIGURE_COMPONENT_ACTION)
         .action(new ConfigureComponentActonData("container", "Hero Image", 0,
             new ResourceFileLocation("component-configs/hero.yaml")));
-
-    System.out.println("dupa");
   }
 
   @AfterEach
