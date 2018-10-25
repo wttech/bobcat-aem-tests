@@ -28,7 +28,7 @@ import org.junit.jupiter.api.Test;
 @Modules(GuiceModule.class)
 @Epic("AEM 6.4 Base Tests")
 @Feature("TextComponent Tests")
-public class EditComponentTest extends AbstractAemAuthorTest {
+public class ConfigureComponentTest extends AbstractAemAuthorTest {
 
   private static final String TEST_PAGE_PATH = "/content/we-retail/us/en/editcomponenttestpage";
 
@@ -46,7 +46,7 @@ public class EditComponentTest extends AbstractAemAuthorTest {
   }
 
   @Test
-  public void configureComponentTest() {
+  public void configureTextComponentTest() {
     TestPage testPage = bobcatPageFactory
         .create("/editor.html" + TEST_PAGE_PATH + ".html", TestPage.class);
     testPage.setTitle(PAGE_TO_CREATE_TITLE);
@@ -56,6 +56,19 @@ public class EditComponentTest extends AbstractAemAuthorTest {
             new ResourceFileLocation("component-configs/text.yaml")));
     TextComponentImpl content =(TextComponentImpl) testPage.getContent(TextComponent.class, 0);
     assertEquals(TEXT_COMPONENT_HTML,content.getInnerHTML().trim());
+  }
+
+  @Test
+  public void configureHeroImageComponentTest() {
+    TestPage testPage = bobcatPageFactory
+        .create("/editor.html" + TEST_PAGE_PATH + ".html", TestPage.class);
+    testPage.setTitle(PAGE_TO_CREATE_TITLE);
+    assertTrue(testPage.open().isDisplayed());
+    componentController.getSidePanelAction(ConfigureComponentAction.CONFIGURE_COMPONENT_ACTION)
+        .action(new ConfigureComponentActonData("container", "Hero Image", 0,
+            new ResourceFileLocation("component-configs/hero.yaml")));
+
+    
   }
 
   @AfterEach

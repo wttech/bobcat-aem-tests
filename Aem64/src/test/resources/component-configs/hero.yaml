@@ -1,0 +1,4 @@
+Properties:
+- label: Heading
+  type: TEXTFIELD
+  value: test test test
