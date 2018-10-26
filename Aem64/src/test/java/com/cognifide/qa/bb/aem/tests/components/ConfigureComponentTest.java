@@ -33,7 +33,7 @@ public class ConfigureComponentTest extends AbstractAemAuthorTest {
   private static final String TEST_PAGE_PATH = "/content/we-retail/us/en/editcomponenttestpage";
 
   private final static String PAGE_TO_CREATE_TITLE = "testPage";
-  private static final String TEXT_COMPONENT_HTML = "<p>test test test</p>";
+  private static final String TEXT_COMPONENT_HTML = "<p><b>test test test</b></p>";
 
   @Inject
   private ComponentController componentController;
