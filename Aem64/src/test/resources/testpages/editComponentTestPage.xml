@@ -32,6 +32,9 @@
           <heroimage
             jcr:primaryType="nt:unstructured"
             sling:resourceType="weretail/components/content/heroimage"/>
+          <list
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="weretail/components/content/list"/>
         </responsivegrid>
       </responsivegrid>
     </root>

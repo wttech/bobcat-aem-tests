@@ -69,6 +69,17 @@ public class ConfigureComponentTest extends AbstractAemAuthorTest {
             new ResourceFileLocation("component-configs/hero.yaml")));
   }
 
+  @Test
+  public void configureListComponentTest() {
+    TestPage testPage = bobcatPageFactory
+        .create("/editor.html" + TEST_PAGE_PATH + ".html", TestPage.class);
+    testPage.setTitle(PAGE_TO_CREATE_TITLE);
+    assertTrue(testPage.open().isDisplayed());
+    componentController.getSidePanelAction(ConfigureComponentAction.CONFIGURE_COMPONENT_ACTION)
+        .action(new ConfigureComponentActonData("container/container", "List", 0,
+            new ResourceFileLocation("component-configs/list.yaml")));
+  }
+
   @AfterEach
   public void deleteTestPage() throws AemPageManipulationException {
     aemTestPageControler.deleteTestPage(new SlingTestPageData(TEST_PAGE_PATH, null));
