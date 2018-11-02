@@ -95,6 +95,17 @@ public class ConfigureComponentTest extends AbstractAemAuthorTest {
   }
 
   @Test
+  public void configureFormOptionsComponentTest() {
+    TestPage testPage = bobcatPageFactory
+        .create("/editor.html" + TEST_PAGE_PATH + ".html", TestPage.class);
+    testPage.setTitle(PAGE_TO_CREATE_TITLE);
+    assertTrue(testPage.open().isDisplayed());
+    componentController.getSidePanelAction(ConfigureComponentAction.CONFIGURE_COMPONENT_ACTION)
+        .action(new ConfigureComponentActonData("container/container", "Form Options", 0,
+            new ResourceFileLocation("component-configs/formoptions.yaml")));
+  }
+
+  @Test
   public void configureContentFragmentComponentTest() {
     TestPage testPage = bobcatPageFactory
         .create("/editor.html" + TEST_PAGE_PATH + ".html", TestPage.class);

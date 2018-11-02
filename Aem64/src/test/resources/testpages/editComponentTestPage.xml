@@ -38,6 +38,9 @@
           <contentfragment
             jcr:primaryType="nt:unstructured"
             sling:resourceType="weretail/components/content/contentfragment"/>
+          <formoptions
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="weretail/components/form/options"/>
         </responsivegrid>
       </responsivegrid>
     </root>
