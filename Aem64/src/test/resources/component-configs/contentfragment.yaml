@@ -1,0 +1,7 @@
+Properties:
+- label: Content Fragment
+  type: PATHBROWSER
+  value: /content/dam/we-retail/en/experiences/skitouring/skitouring
+- label: Display Mode
+  type: RADIO_GROUP
+  value: Single Text Element

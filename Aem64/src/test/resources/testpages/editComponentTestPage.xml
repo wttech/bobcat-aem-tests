@@ -35,6 +35,9 @@
           <list
             jcr:primaryType="nt:unstructured"
             sling:resourceType="weretail/components/content/list"/>
+          <contentfragment
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="weretail/components/content/contentfragment"/>
         </responsivegrid>
       </responsivegrid>
     </root>
