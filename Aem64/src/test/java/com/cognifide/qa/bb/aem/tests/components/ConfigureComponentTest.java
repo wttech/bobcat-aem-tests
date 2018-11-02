@@ -34,6 +34,7 @@ public class ConfigureComponentTest extends AbstractAemAuthorTest {
 
   private final static String PAGE_TO_CREATE_TITLE = "testPage";
   private static final String TEXT_COMPONENT_HTML = "<p><b>test test test</b></p>";
+  private static final String TEXT_COMPONENT_LIST_HTML = "<ul>\n<li>test test test</li>\n</ul>";
 
   @Inject
   private ComponentController componentController;
@@ -54,8 +55,21 @@ public class ConfigureComponentTest extends AbstractAemAuthorTest {
     componentController.getSidePanelAction(ConfigureComponentAction.CONFIGURE_COMPONENT_ACTION)
         .action(new ConfigureComponentActonData("container", "Text", 0,
             new ResourceFileLocation("component-configs/text.yaml")));
-    TextComponentImpl content =(TextComponentImpl) testPage.getContent(TextComponent.class, 0);
-    assertEquals(TEXT_COMPONENT_HTML,content.getInnerHTML().trim());
+    TextComponentImpl content = (TextComponentImpl) testPage.getContent(TextComponent.class, 0);
+    assertEquals(TEXT_COMPONENT_HTML, content.getInnerHTML().trim());
+  }
+
+  @Test
+  public void configureTextListComponentTest() {
+    TestPage testPage = bobcatPageFactory
+        .create("/editor.html" + TEST_PAGE_PATH + ".html", TestPage.class);
+    testPage.setTitle(PAGE_TO_CREATE_TITLE);
+    assertTrue(testPage.open().isDisplayed());
+    componentController.getSidePanelAction(ConfigureComponentAction.CONFIGURE_COMPONENT_ACTION)
+        .action(new ConfigureComponentActonData("container", "Text", 0,
+            new ResourceFileLocation("component-configs/textlist.yaml")));
+    TextComponentImpl content = (TextComponentImpl) testPage.getContent(TextComponent.class, 0);
+    assertEquals(TEXT_COMPONENT_LIST_HTML, content.getInnerHTML().trim());
   }
 
   @Test
