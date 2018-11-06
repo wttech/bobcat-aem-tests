@@ -1,21 +1,17 @@
 package com.cognifide.qa.bb.aem.tests.pages;
 
+import org.openqa.selenium.support.ui.ExpectedConditions;
+
 import com.cognifide.qa.bb.aem.core.pages.AemAuthorPage;
 import com.cognifide.qa.bb.qualifier.PageObject;
-import com.cognifide.qa.bb.utils.WebElementUtils;
+import com.cognifide.qa.bb.wait.BobcatWait;
 import com.google.inject.Inject;
-import javax.inject.Named;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 @PageObject
 public class TestPage extends AemAuthorPage<TestPage> {
 
   @Inject
-  private WebElementUtils webElementUtils;
-
-  @Inject
-  @Named("page.title.timeout")
-  protected int pageTitleTimeout;
+  private BobcatWait bobcatWait;
 
   private String title = "English";
 
@@ -28,12 +24,10 @@ public class TestPage extends AemAuthorPage<TestPage> {
   }
 
   public boolean isDisplayed() {
-    return webElementUtils
-        .isConditionMet(ExpectedConditions.titleIs(getTitle()), pageTitleTimeout);
+    return bobcatWait.isConditionMet(ExpectedConditions.titleIs(getTitle()));
   }
 
   public boolean isNotAvailable() {
-    return webElementUtils
-        .isConditionMet(ExpectedConditions.titleContains("404 Resource"), pageTitleTimeout);
+    return bobcatWait.isConditionMet(ExpectedConditions.titleContains("404 Resource"));
   }
 }
