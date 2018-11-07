@@ -1,9 +1,10 @@
 package com.cognifide.qa.bb.aem.tests.siteadmin;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import com.cognifide.qa.bb.RunWithJunit5;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Test;
+
 import com.cognifide.qa.bb.aem.core.pages.AemPageManipulationException;
 import com.cognifide.qa.bb.aem.core.pages.AemTestPageControler;
 import com.cognifide.qa.bb.aem.core.pages.sling.SlingTestPageData;
@@ -14,14 +15,12 @@ import com.cognifide.qa.bb.aem.tests.pages.TestPage;
 import com.cognifide.qa.bb.junit5.guice.Modules;
 import com.cognifide.qa.bb.page.BobcatPageFactory;
 import com.google.inject.Inject;
+
 import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Test;
 
-@RunWithJunit5
 @Modules(GuiceModule.class)
 @Epic("AEM 6.4 Base Tests")
 @Feature("Site Admin Tests")
@@ -48,7 +47,7 @@ public class SiteAdminControllerTest extends AbstractAemAuthorTest {
   @Description("Create test page using create action from site admin")
   public void createPageActionTest() {
 
-    TestPage testPage = bobcatPageFactory.create(FULL_PAGE_PATH+ ".html", TestPage.class);
+    TestPage testPage = bobcatPageFactory.create(FULL_PAGE_PATH + ".html", TestPage.class);
     testPage.setTitle(PAGE_TO_CREATE_TITLE);
     assertTrue(testPage.open().isNotAvailable());
 

@@ -1,9 +1,12 @@
 package com.cognifide.qa.bb.aem.tests.components;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import com.cognifide.qa.bb.RunWithJunit5;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
 import com.cognifide.qa.bb.aem.core.component.action.ComponentController;
 import com.cognifide.qa.bb.aem.core.component.actions.ConfigureComponentAction;
 import com.cognifide.qa.bb.aem.core.component.actions.ConfigureComponentActonData;
@@ -18,13 +21,10 @@ import com.cognifide.qa.bb.aem.tests.pageobjects.TextComponentImpl;
 import com.cognifide.qa.bb.aem.tests.pages.TestPage;
 import com.cognifide.qa.bb.junit5.guice.Modules;
 import com.google.inject.Inject;
+
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 
-@RunWithJunit5
 @Modules(GuiceModule.class)
 @Epic("AEM 6.4 Base Tests")
 @Feature("TextComponent Tests")
@@ -33,8 +33,8 @@ public class ConfigureComponentTest extends AbstractAemAuthorTest {
   private static final String TEST_PAGE_PATH = "/content/we-retail/us/en/editcomponenttestpage";
 
   private final static String PAGE_TO_CREATE_TITLE = "testPage";
-  private static final String TEXT_COMPONENT_HTML = "<p><b>test test test</b></p>";
-  private static final String TEXT_COMPONENT_LIST_HTML = "<ul>\n<li>test test test</li>\n</ul>";
+  private static final String EXPECTED_LIST_PATTERN = "<ul><li>test test test.*</li></ul>";
+  public static final String EXPECTED_TEXT_PATTERN = ".*<b>test test test.*</b>.*";
 
   @Inject
   private ComponentController componentController;
@@ -56,7 +56,9 @@ public class ConfigureComponentTest extends AbstractAemAuthorTest {
         .action(new ConfigureComponentActonData("container", "Text", 0,
             new ResourceFileLocation("component-configs/text.yaml")));
     TextComponentImpl content = (TextComponentImpl) testPage.getContent(TextComponent.class, 0);
-    assertEquals(TEXT_COMPONENT_HTML, content.getInnerHTML().trim());
+
+    assertThat(content.getInnerHTML().trim().replaceAll("\\r|\\n", ""))
+        .matches(EXPECTED_TEXT_PATTERN);
   }
 
   @Test
@@ -69,7 +71,8 @@ public class ConfigureComponentTest extends AbstractAemAuthorTest {
         .action(new ConfigureComponentActonData("container", "Text", 0,
             new ResourceFileLocation("component-configs/textlist.yaml")));
     TextComponentImpl content = (TextComponentImpl) testPage.getContent(TextComponent.class, 0);
-    assertEquals(TEXT_COMPONENT_LIST_HTML, content.getInnerHTML().trim());
+    assertThat(content.getInnerHTML().trim().replaceAll("\\r|\\n", ""))
+        .matches(EXPECTED_LIST_PATTERN);
   }
 
   @Test
