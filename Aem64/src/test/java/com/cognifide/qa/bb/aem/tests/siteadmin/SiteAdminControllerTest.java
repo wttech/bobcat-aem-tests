@@ -5,8 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
-import com.cognifide.qa.bb.aem.core.pages.AemPageManipulationException;
-import com.cognifide.qa.bb.aem.core.pages.AemTestPageControler;
+import com.cognifide.qa.bb.aem.core.api.ActionException;
+import com.cognifide.qa.bb.aem.core.api.Actions;
 import com.cognifide.qa.bb.aem.core.pages.sling.SlingTestPageData;
 import com.cognifide.qa.bb.aem.tests.AbstractAemAuthorTest;
 import com.cognifide.qa.bb.aem.tests.GuiceModule;
@@ -37,15 +37,12 @@ public class SiteAdminControllerTest extends AbstractAemAuthorTest {
   private static final String SITES_PAGE_PATH = "/sites.html/content/we-retail/us/en";
 
   @Inject
-  private AemTestPageControler aemTestPageControler;
-
-  @Inject
   private BobcatPageFactory bobcatPageFactory;
 
   @Test
   @Story("Create test page from sites.html")
   @Description("Create test page using create action from site admin")
-  public void createPageActionTest() {
+  public void createPageActionTest() throws ActionException {
 
     TestPage testPage = bobcatPageFactory.create(FULL_PAGE_PATH + ".html", TestPage.class);
     testPage.setTitle(PAGE_TO_CREATE_TITLE);
@@ -58,7 +55,7 @@ public class SiteAdminControllerTest extends AbstractAemAuthorTest {
   }
 
   @AfterEach
-  public void deleteTestPage() throws AemPageManipulationException {
-    aemTestPageControler.deleteTestPage(new SlingTestPageData(FULL_PAGE_PATH, null));
+  public void deleteTestPage() throws ActionException {
+    bobcatController.execute(Actions.Page.DELETE, new SlingTestPageData(FULL_PAGE_PATH, null));
   }
 }

@@ -1,9 +1,10 @@
 package com.cognifide.qa.bb.aem.tests.pages;
 
+import com.cognifide.qa.bb.aem.core.api.ActionException;
+import com.cognifide.qa.bb.aem.core.api.Actions;
+import com.cognifide.qa.bb.aem.core.api.Controller;
 import com.cognifide.qa.bb.aem.core.pages.AemAuthorPage;
-import com.cognifide.qa.bb.aem.core.siteadmin.CreatePageAction;
-import com.cognifide.qa.bb.aem.core.siteadmin.CreatePageActionData;
-import com.cognifide.qa.bb.aem.core.siteadmin.SiteAdminController;
+import com.cognifide.qa.bb.aem.core.siteadmin.actions.CreatePageActionData;
 import com.cognifide.qa.bb.qualifier.PageObject;
 import com.google.inject.Inject;
 
@@ -11,11 +12,11 @@ import com.google.inject.Inject;
 public class SitesPage extends AemAuthorPage<SitesPage> {
 
   @Inject
-  private SiteAdminController siteAdminController;
+  private Controller controller;
 
-  public void createPage(String template, String title, String name) {
-    siteAdminController.getSiteAdminAction(CreatePageAction.PAGE_CREATE)
-        .action(new CreatePageActionData(template,title,name));
+  public void createPage(String template, String title, String name) throws ActionException {
+    controller
+        .execute(Actions.Siteadmin.CREATE_PAGE, new CreatePageActionData(template, title, name));
   }
 
 }

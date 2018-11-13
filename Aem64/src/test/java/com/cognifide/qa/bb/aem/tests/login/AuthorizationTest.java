@@ -4,7 +4,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
-import com.cognifide.qa.bb.aem.core.login.AemAuthenticationController;
+import com.cognifide.qa.bb.aem.core.api.ActionException;
+import com.cognifide.qa.bb.aem.core.api.Actions;
+import com.cognifide.qa.bb.aem.core.api.Controller;
 import com.cognifide.qa.bb.aem.tests.GuiceModule;
 import com.cognifide.qa.bb.aem.tests.pages.TestPage;
 import com.cognifide.qa.bb.junit5.guice.Modules;
@@ -22,7 +24,7 @@ import io.qameta.allure.Story;
 public class AuthorizationTest {
 
   @Inject
-  private AemAuthenticationController aemAuthenticationController;
+  private Controller controller;
 
   @Inject
   private BobcatPageFactory bobcatPageFactory;
@@ -30,18 +32,19 @@ public class AuthorizationTest {
   @Test
   @Story("Login to AEM and open Test page")
   @Description("Login to author instance and open test page")
-  public void loginTest() {
+  public void loginTest() throws ActionException {
     TestPage testpage = bobcatPageFactory.create("/content/we-retail/us/en.html", TestPage.class);
-    aemAuthenticationController.login();
-    assertTrue(((TestPage) testpage.open()).isDisplayed());
+    controller.execute(Actions.Login.LOG_IN);
+    assertTrue(testpage.open().isDisplayed());
   }
 
   @Test
   @Story("Login to AEM and open Test page")
   @Description("Login to author instance and open test page in one step")
-  public void loginAndOpenTest() {
+  public void loginAndOpenTest() throws ActionException {
     TestPage testpage = bobcatPageFactory.create("/content/we-retail/us/en.html", TestPage.class);
-    aemAuthenticationController.login(testpage);
+    controller.execute(Actions.Login.LOG_IN);
+    testpage.open();
     assertTrue(testpage.isDisplayed());
   }
 }

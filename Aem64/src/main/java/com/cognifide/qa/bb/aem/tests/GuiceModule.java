@@ -1,6 +1,6 @@
 package com.cognifide.qa.bb.aem.tests;
 
-import com.cognifide.qa.bb.aem.core.guice.Aem64FullModule;
+import com.cognifide.qa.bb.aem.core.modules.Aem64FullModule;
 import com.cognifide.qa.bb.aem.tests.pageobjects.TextComponent;
 import com.cognifide.qa.bb.aem.tests.pageobjects.TextComponentImpl;
 import com.cognifide.qa.bb.modules.CoreModule;
