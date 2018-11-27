@@ -7,17 +7,17 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.cognifide.qa.bb.aem.core.api.ActionException;
-import com.cognifide.qa.bb.aem.core.api.Actions;
+import com.cognifide.qa.bb.aem.core.api.AemActions;
 import com.cognifide.qa.bb.aem.core.component.actions.ConfigureComponentData;
 import com.cognifide.qa.bb.aem.core.component.configuration.ResourceFileLocation;
-import com.cognifide.qa.bb.aem.core.pages.sling.SlingTestDataXMLBuilder;
-import com.cognifide.qa.bb.aem.core.pages.sling.SlingTestPageData;
+import com.cognifide.qa.bb.aem.core.pages.sling.SlingDataXMLBuilder;
+import com.cognifide.qa.bb.aem.core.pages.sling.SlingPageData;
 import com.cognifide.qa.bb.aem.tests.AbstractAemAuthorTest;
 import com.cognifide.qa.bb.aem.tests.GuiceModule;
 import com.cognifide.qa.bb.aem.tests.pageobjects.TextComponent;
 import com.cognifide.qa.bb.aem.tests.pageobjects.TextComponentImpl;
 import com.cognifide.qa.bb.aem.tests.pages.TestPage;
+import com.cognifide.qa.bb.api.actions.ActionException;
 import com.cognifide.qa.bb.junit5.guice.Modules;
 
 import io.qameta.allure.Epic;
@@ -36,9 +36,9 @@ public class ConfigureComponentTest extends AbstractAemAuthorTest {
 
   @BeforeEach
   public void createTestPage() throws ActionException {
-    bobcatController.execute(Actions.Page.CREATE,
-        new SlingTestPageData(TEST_PAGE_PATH,
-            SlingTestDataXMLBuilder.buildSlingTestData("testpages/editComponentTestPage.xml")));
+    controller.execute(AemActions.CREATE_PAGE_VIA_SLING,
+        new SlingPageData(TEST_PAGE_PATH,
+            SlingDataXMLBuilder.buildFromFile("testpages/editComponentTestPage.xml")));
   }
 
   @Test
@@ -47,7 +47,7 @@ public class ConfigureComponentTest extends AbstractAemAuthorTest {
         .create("/editor.html" + TEST_PAGE_PATH + ".html", TestPage.class);
     testPage.setTitle(PAGE_TO_CREATE_TITLE);
     assertTrue(testPage.open().isDisplayed());
-    bobcatController.execute(Actions.Component.CONFIGURE,
+    controller.execute(AemActions.CONFIGURE_COMPONENT,
         new ConfigureComponentData("container", "Text", 0,
             new ResourceFileLocation("component-configs/text.yaml")));
     TextComponentImpl content = (TextComponentImpl) testPage.getContent(TextComponent.class, 0);
@@ -62,7 +62,7 @@ public class ConfigureComponentTest extends AbstractAemAuthorTest {
         .create("/editor.html" + TEST_PAGE_PATH + ".html", TestPage.class);
     testPage.setTitle(PAGE_TO_CREATE_TITLE);
     assertTrue(testPage.open().isDisplayed());
-    bobcatController.execute(Actions.Component.CONFIGURE,
+    controller.execute(AemActions.CONFIGURE_COMPONENT,
         new ConfigureComponentData("container", "Text", 0,
             new ResourceFileLocation("component-configs/textlist.yaml")));
     TextComponentImpl content = (TextComponentImpl) testPage.getContent(TextComponent.class, 0);
@@ -76,7 +76,7 @@ public class ConfigureComponentTest extends AbstractAemAuthorTest {
         .create("/editor.html" + TEST_PAGE_PATH + ".html", TestPage.class);
     testPage.setTitle(PAGE_TO_CREATE_TITLE);
     assertTrue(testPage.open().isDisplayed());
-    bobcatController.execute(Actions.Component.CONFIGURE,
+    controller.execute(AemActions.CONFIGURE_COMPONENT,
         new ConfigureComponentData("container", "Hero Image", 0,
             new ResourceFileLocation("component-configs/hero.yaml")));
   }
@@ -87,7 +87,7 @@ public class ConfigureComponentTest extends AbstractAemAuthorTest {
         .create("/editor.html" + TEST_PAGE_PATH + ".html", TestPage.class);
     testPage.setTitle(PAGE_TO_CREATE_TITLE);
     assertTrue(testPage.open().isDisplayed());
-    bobcatController.execute(Actions.Component.CONFIGURE,
+    controller.execute(AemActions.CONFIGURE_COMPONENT,
         new ConfigureComponentData("container/container", "List", 0,
             new ResourceFileLocation("component-configs/list.yaml")));
   }
@@ -98,7 +98,7 @@ public class ConfigureComponentTest extends AbstractAemAuthorTest {
         .create("/editor.html" + TEST_PAGE_PATH + ".html", TestPage.class);
     testPage.setTitle(PAGE_TO_CREATE_TITLE);
     assertTrue(testPage.open().isDisplayed());
-    bobcatController.execute(Actions.Component.CONFIGURE,
+    controller.execute(AemActions.CONFIGURE_COMPONENT,
         new ConfigureComponentData("container/container", "Form Options", 0,
             new ResourceFileLocation("component-configs/formoptions.yaml")));
   }
@@ -109,14 +109,14 @@ public class ConfigureComponentTest extends AbstractAemAuthorTest {
         .create("/editor.html" + TEST_PAGE_PATH + ".html", TestPage.class);
     testPage.setTitle(PAGE_TO_CREATE_TITLE);
     assertTrue(testPage.open().isDisplayed());
-    bobcatController.execute(Actions.Component.CONFIGURE,
+    controller.execute(AemActions.CONFIGURE_COMPONENT,
         new ConfigureComponentData("container/container", "Content Fragment", 0,
             new ResourceFileLocation("component-configs/contentfragment.yaml")));
   }
 
   @AfterEach
   public void deleteTestPage() throws ActionException {
-    bobcatController.execute(Actions.Page.DELETE, new SlingTestPageData(TEST_PAGE_PATH, null));
+    controller.execute(AemActions.DELETE_PAGE_VIA_SLING, new SlingPageData(TEST_PAGE_PATH));
   }
 }
 

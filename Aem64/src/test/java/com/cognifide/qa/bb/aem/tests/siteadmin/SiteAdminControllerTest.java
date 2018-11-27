@@ -5,13 +5,13 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
-import com.cognifide.qa.bb.aem.core.api.ActionException;
-import com.cognifide.qa.bb.aem.core.api.Actions;
-import com.cognifide.qa.bb.aem.core.pages.sling.SlingTestPageData;
+import com.cognifide.qa.bb.aem.core.api.AemActions;
+import com.cognifide.qa.bb.aem.core.pages.sling.SlingPageData;
 import com.cognifide.qa.bb.aem.tests.AbstractAemAuthorTest;
 import com.cognifide.qa.bb.aem.tests.GuiceModule;
 import com.cognifide.qa.bb.aem.tests.pages.SitesPage;
 import com.cognifide.qa.bb.aem.tests.pages.TestPage;
+import com.cognifide.qa.bb.api.actions.ActionException;
 import com.cognifide.qa.bb.junit5.guice.Modules;
 import com.cognifide.qa.bb.page.BobcatPageFactory;
 import com.google.inject.Inject;
@@ -56,6 +56,6 @@ public class SiteAdminControllerTest extends AbstractAemAuthorTest {
 
   @AfterEach
   public void deleteTestPage() throws ActionException {
-    bobcatController.execute(Actions.Page.DELETE, new SlingTestPageData(FULL_PAGE_PATH, null));
+    controller.execute(AemActions.DELETE_PAGE_VIA_SLING, new SlingPageData(FULL_PAGE_PATH));
   }
 }
