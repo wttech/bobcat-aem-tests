@@ -2,16 +2,15 @@ package com.cognifide.qa.bb.aem.tests.page;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.io.IOException;
-
 import org.junit.jupiter.api.Test;
 
-import com.cognifide.qa.bb.aem.core.pages.AemPageManipulationException;
-import com.cognifide.qa.bb.aem.core.pages.sling.SlingTestDataXMLBuilder;
-import com.cognifide.qa.bb.aem.core.pages.sling.SlingTestPageData;
+import com.cognifide.qa.bb.aem.core.api.AemActions;
+import com.cognifide.qa.bb.aem.core.pages.sling.SlingDataXMLBuilder;
+import com.cognifide.qa.bb.aem.core.pages.sling.SlingPageData;
 import com.cognifide.qa.bb.aem.tests.AbstractAemAuthorTest;
 import com.cognifide.qa.bb.aem.tests.GuiceModule;
 import com.cognifide.qa.bb.aem.tests.pages.TestPage;
+import com.cognifide.qa.bb.api.actions.ActionException;
 import com.cognifide.qa.bb.junit5.guice.Modules;
 
 import io.qameta.allure.Description;
@@ -29,16 +28,14 @@ public class SlingPageManipulationTest extends AbstractAemAuthorTest {
   @Test
   @Story("Create and delete test page")
   @Description("Create and delete test page using sling controller")
-  public void pageManipulationTest() throws IOException, AemPageManipulationException {
+  public void pageManipulationTest() throws ActionException {
 
-    aemTestPageControler.createTestPage(
-        new SlingTestPageData(TEST_PAGE_PATH,
-            SlingTestDataXMLBuilder.buildSlingTestData("testpages/pageTest.xml")));
+    controller.execute(AemActions.CREATE_PAGE_VIA_SLING, new SlingPageData(TEST_PAGE_PATH,
+        SlingDataXMLBuilder.buildFromFile("testpages/pageTest.xml")));
     TestPage testPage = bobcatPageFactory.create(TEST_PAGE_PATH + ".html", TestPage.class);
     testPage.open();
     assertTrue(testPage.isDisplayed());
-    aemTestPageControler
-        .deleteTestPage(new SlingTestPageData(TEST_PAGE_PATH, null));
+    controller.execute(AemActions.DELETE_PAGE_VIA_SLING, new SlingPageData(TEST_PAGE_PATH));
     testPage.open();
     assertTrue(testPage.isNotAvailable());
   }
