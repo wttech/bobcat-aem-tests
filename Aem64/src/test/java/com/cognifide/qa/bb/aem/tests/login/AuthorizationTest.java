@@ -37,14 +37,4 @@ public class AuthorizationTest {
     controller.execute(AemActions.LOG_IN);
     assertTrue(testpage.open().isDisplayed());
   }
-
-  @Test
-  @Story("Login to AEM and open Test page")
-  @Description("Login to author instance and open test page in one step")
-  public void loginAndOpenTest() throws ActionException {
-    TestPage testpage = bobcatPageFactory.create("/content/we-retail/us/en.html", TestPage.class);
-    controller.execute(AemActions.LOG_IN);
-    testpage.open();
-    assertTrue(testpage.isDisplayed());
-  }
 }
