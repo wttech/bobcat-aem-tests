@@ -3,6 +3,7 @@ package com.cognifide.qa.bb.aem.tests.components;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import com.cognifide.qa.bb.modules.BobcatRunModule;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -23,7 +24,7 @@ import com.cognifide.qa.bb.junit5.guice.Modules;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 
-@Modules(GuiceModule.class)
+@Modules(BobcatRunModule.class)
 @Epic("AEM 6.4 Base Tests")
 @Feature("TextComponent Tests")
 public class ConfigureComponentTest extends AbstractAemAuthorTest {

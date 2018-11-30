@@ -2,6 +2,7 @@ package com.cognifide.qa.bb.aem.tests.siteadmin;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import com.cognifide.qa.bb.modules.BobcatRunModule;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
@@ -21,7 +22,7 @@ import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 
-@Modules(GuiceModule.class)
+@Modules(BobcatRunModule.class)
 @Epic("AEM 6.4 Base Tests")
 @Feature("Site Admin Tests")
 public class SiteAdminControllerTest extends AbstractAemAuthorTest {
