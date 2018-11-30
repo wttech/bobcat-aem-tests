@@ -3,26 +3,23 @@ package com.cognifide.qa.bb.aem.tests.components;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import com.cognifide.qa.bb.modules.BobcatRunModule;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
 import com.cognifide.qa.bb.aem.core.api.AemActions;
 import com.cognifide.qa.bb.aem.core.component.actions.ConfigureComponentData;
 import com.cognifide.qa.bb.aem.core.component.configuration.ResourceFileLocation;
 import com.cognifide.qa.bb.aem.core.pages.sling.SlingDataXMLBuilder;
 import com.cognifide.qa.bb.aem.core.pages.sling.SlingPageData;
 import com.cognifide.qa.bb.aem.tests.AbstractAemAuthorTest;
-import com.cognifide.qa.bb.aem.tests.GuiceModule;
 import com.cognifide.qa.bb.aem.tests.pageobjects.TextComponent;
 import com.cognifide.qa.bb.aem.tests.pageobjects.TextComponentImpl;
 import com.cognifide.qa.bb.aem.tests.pages.TestPage;
 import com.cognifide.qa.bb.api.actions.ActionException;
 import com.cognifide.qa.bb.junit5.guice.Modules;
-
+import com.cognifide.qa.bb.modules.BobcatRunModule;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 @Modules(BobcatRunModule.class)
 @Epic("AEM 6.4 Base Tests")
