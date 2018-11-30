@@ -1,9 +1,7 @@
 package com.cognifide.qa.bb.aem.tests;
 
-import com.cognifide.qa.bb.aem.core.modules.Aem64FullModule;
 import com.cognifide.qa.bb.aem.tests.pageobjects.TextComponent;
 import com.cognifide.qa.bb.aem.tests.pageobjects.TextComponentImpl;
-import com.cognifide.qa.bb.modules.CoreModule;
 import com.google.inject.AbstractModule;
 
 /**
@@ -16,10 +14,9 @@ import com.google.inject.AbstractModule;
  * reporting functionality, including reporting rule and HTML report.
  */
 public class GuiceModule extends AbstractModule {
+
   @Override
   protected void configure() {
-    install(new CoreModule());
-    install(new Aem64FullModule());
     bind(TextComponent.class).to(TextComponentImpl.class);
   }
 }

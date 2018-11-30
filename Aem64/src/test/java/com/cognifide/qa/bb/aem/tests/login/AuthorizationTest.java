@@ -10,6 +10,7 @@ import com.cognifide.qa.bb.aem.tests.pages.TestPage;
 import com.cognifide.qa.bb.api.actions.ActionException;
 import com.cognifide.qa.bb.api.actions.ActionsController;
 import com.cognifide.qa.bb.junit5.guice.Modules;
+import com.cognifide.qa.bb.modules.BobcatRunModule;
 import com.cognifide.qa.bb.page.BobcatPageFactory;
 import com.google.inject.Inject;
 
@@ -18,7 +19,7 @@ import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 
-@Modules(GuiceModule.class)
+@Modules(BobcatRunModule.class)
 @Epic("AEM 6.4 Base Tests")
 @Feature("Login to AEM")
 public class AuthorizationTest {
