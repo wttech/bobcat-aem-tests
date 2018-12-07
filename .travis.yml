@@ -11,4 +11,4 @@ install: true
 
 sudo: false
 script:
-  - gradlew clean assemble
+  - cd Aem64 && ./gradlew clean assemble
