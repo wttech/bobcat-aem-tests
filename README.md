@@ -1,6 +1,24 @@
 # Bobcat AEM tests
 Contains integration tests and examples for Bobcat's AEM modules.
 
->:warning: **Important** :warning:
->
->Tests in this repo are still under development to be aligned with Bobcat 2.0 - for now to make them work, you need to have a working AEM instance and should have locally compiled [Bobcat sources](https://github.com/Cognifide/bobcat) from the `2.0.0-develop` branch.
+Each folder contains tests for specific AEM version.
+
+# Building and running tests
+
+## Prerequisites
+- running instance of AEM in correct version
+    - instance should be available at localhost:4502 with default user and password
+- JDK 1.8
+- Mozilla Firefox and Geckodriver added to PATH
+
+## Building the project
+Run the following:
+```
+./gradlew clean assembly
+```
+
+## Running tests
+Run the following:
+```
+./gradlew clean test
+```
