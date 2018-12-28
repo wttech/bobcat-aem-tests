@@ -3,7 +3,7 @@
   #%L
   Bobcat Parent
   %%
-  Copyright (C) 2016 Cognifide Ltd.
+  Copyright (C) 2018 Cognifide Ltd.
   %%
   Licensed under the Apache License, Version 2.0 (the "License");
   you may not use this file except in compliance with the License.
@@ -18,13 +18,12 @@
   limitations under the License.
   #L%
   -->
-
 <configuration>
 
     <timestamp key="day" datePattern="yyyy-MM-dd"/>
 
     <appender name="FILE_DEFAULT" class="ch.qos.logback.core.FileAppender">
-        <file>target/logs/default_${day}.log</file>
+        <file>build/logs/default_${day}.log</file>
         <append>true</append>
         <encoder>
             <charset>UTF-8</charset>
@@ -32,7 +31,6 @@
         </encoder>
     </appender>
 
-    <logger name="com.cognifide.bdd" level="DEBUG"/>
     <logger name="com.cognifide.qa.bb" level="DEBUG"/>
 
     <logger name="com.cognifide.qa.bb.proxy.record.TrafficLogAnalyzer" level="DEBUG"/>
