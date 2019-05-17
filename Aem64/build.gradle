@@ -17,7 +17,7 @@ apply plugin: 'io.qameta.allure'
 
 sourceCompatibility = 1.8
 
-def bobcatVersion = "2.0.4-SNAPSHOT"
+def bobcatVersion = "2.0.3"
 
 repositories {
     mavenLocal()
