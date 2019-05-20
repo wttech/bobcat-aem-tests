@@ -1,0 +1,69 @@
+group 'com.cognifide.qa.bb.aem.tests'
+version '1.0-SNAPSHOT'
+
+buildscript {
+    repositories {
+        jcenter()
+        mavenLocal()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'io.qameta.allure:allure-gradle:2.5'
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'io.qameta.allure'
+
+sourceCompatibility = 1.8
+
+def bobcatVersion = "2.0.4-SNAPSHOT"
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    compile group: 'com.cognifide.qa.bb', name: 'bb-core', version: bobcatVersion
+    compile group: 'com.cognifide.qa.bb', name: 'bb-junit5', version: bobcatVersion
+    compile group: 'com.cognifide.qa.bb', name: 'bb-aem-core', version: bobcatVersion
+    compile group: 'com.cognifide.qa.bb', name: 'bb-aem-65', version: bobcatVersion
+}
+
+def profiles = [
+        'firefox' : 'firefox'
+]
+
+task loadProperties {
+    System.setProperty("bobcat.config","yaml");
+    def profile = System.getProperty('profile','default')
+    if(!profile.equals('default')) {
+        System.setProperty("bobcat.config.contexts", profiles[profile])
+    }
+}
+
+test.dependsOn loadProperties
+
+test {
+    useJUnitPlatform()
+    systemProperties = System.getProperties()
+    systemProperty 'junit.jupiter.extensions.autodetection.enabled', 'true'
+    maxParallelForks = 1
+    testLogging.showStandardStreams = true
+}
+
+gradle.projectsEvaluated {
+    test.finalizedBy allureReport
+}
+
+allure {
+    version = '2.7.0'
+    autoconfigure = true
+    aspectjweaver = true
+    aspectjVersion = '1.8.10'
+
+    useJUnit5 {
+        version = '2.7.0'
+    }
+}
