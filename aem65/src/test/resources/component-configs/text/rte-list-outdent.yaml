@@ -1,0 +1,5 @@
+Properties:
+  - type: RICHTEXT
+    value: ""
+  - type: RTE_OPTIONS_LISTS
+    value: Outdent

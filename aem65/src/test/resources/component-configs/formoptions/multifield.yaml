@@ -1,0 +1,21 @@
+Properties:
+  - label: Option Entries
+    type: MULTIFIELD
+    value:
+      - item:
+          - label: Active
+            type: CHECKBOX
+            value: true
+          - label: Text
+            type: TEXTFIELD
+            value: Text
+          - label: Value
+            type: TEXTFIELD
+            value: Value
+      - item:
+          - label: Text
+            type: TEXTFIELD
+            value: Text2
+          - label: Value
+            type: TEXTFIELD
+            value: Value2

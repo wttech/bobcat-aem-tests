@@ -1,0 +1,5 @@
+Properties:
+  - type: RICHTEXT
+    value: test test test
+  - type: RTE_OPTIONS
+    value: Bold

@@ -1,0 +1,8 @@
+Properties:
+  - type: RICHTEXT
+    value: test test test
+  - type: RTE_OPTIONS_HYPERLINK
+    value: |-
+      Path: #
+      Alt Text: alternative text
+      Target: New Tab

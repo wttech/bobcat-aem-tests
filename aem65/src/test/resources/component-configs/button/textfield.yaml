@@ -1,0 +1,5 @@
+no_label:
+  - label: Button label
+    type: TEXTFIELD
+    value: Testing textfield
+

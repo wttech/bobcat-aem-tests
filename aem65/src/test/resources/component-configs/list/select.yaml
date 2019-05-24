@@ -1,0 +1,4 @@
+Item Settings:
+  - label: Type
+    type: SELECT
+    value: Article

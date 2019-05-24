@@ -27,7 +27,7 @@
         <append>true</append>
         <encoder>
             <charset>UTF-8</charset>
-            <pattern>%d{HH:mm:ss.SSS} %-5level %logger:%L - %msg%n</pattern>
+            <pattern>%d{HH:mm:ss.SSS} | %-5level | %-35.35logger:%L | %msg%n</pattern>
         </encoder>
     </appender>
 

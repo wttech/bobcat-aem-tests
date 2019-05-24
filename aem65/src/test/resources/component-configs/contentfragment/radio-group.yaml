@@ -1,0 +1,5 @@
+Properties:
+  - label: Display Mode
+    type: RADIO_GROUP
+    value: Multiple Elements
+

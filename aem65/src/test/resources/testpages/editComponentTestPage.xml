@@ -28,19 +28,29 @@
           sling:resourceType="wcm/foundation/components/responsivegrid">
           <text
             jcr:primaryType="nt:unstructured"
-            sling:resourceType="weretail/components/content/text"/>
+            sling:resourceType="weretail/components/content/text"
+            text="&lt;p style=&quot;margin-left: 40.0px;&quot;&gt;test test test&lt;br&gt;&lt;/p&gt;"/>
+          <text_1
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="weretail/components/content/text"
+            text="&lt;p&gt;&lt;a title=&quot;alternative text&quot; href=&quot;#&quot; target=&quot;_blank&quot;&gt;test test test&lt;br&gt;&lt;/a&gt;&lt;/p&gt;"/>
           <heroimage
             jcr:primaryType="nt:unstructured"
             sling:resourceType="weretail/components/content/heroimage"/>
           <list
             jcr:primaryType="nt:unstructured"
             sling:resourceType="weretail/components/content/list"/>
+          <button
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="weretail/components/content/button"/>
           <contentfragment
             jcr:primaryType="nt:unstructured"
             sling:resourceType="weretail/components/content/contentfragment"/>
           <formoptions
             jcr:primaryType="nt:unstructured"
-            sling:resourceType="weretail/components/form/options"/>
+            sling:resourceType="weretail/components/form/options"
+            jcr:title="Title"
+            name="Name"/>
         </responsivegrid>
       </responsivegrid>
     </root>
