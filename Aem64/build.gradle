@@ -17,7 +17,7 @@ apply plugin: 'io.qameta.allure'
 
 sourceCompatibility = 1.8
 
-def bobcatVersion = "2.0.3"
+def bobcatVersion = System.getProperty("bobcat.version", "2.0.3")
 
 repositories {
     mavenLocal()
@@ -32,13 +32,13 @@ dependencies {
 }
 
 def profiles = [
-        'firefox' : 'firefox'
+        'firefox': 'firefox'
 ]
 
 task loadProperties {
-    System.setProperty("bobcat.config","yaml");
-    def profile = System.getProperty('profile','default')
-    if(!profile.equals('default')) {
+    System.setProperty("bobcat.config", "yaml");
+    def profile = System.getProperty('profile', 'default')
+    if (!profile.equals('default')) {
         System.setProperty("bobcat.config.contexts", profiles[profile])
     }
 }
@@ -49,7 +49,7 @@ test {
     useJUnitPlatform()
     systemProperties = System.getProperties()
     systemProperty 'junit.jupiter.extensions.autodetection.enabled', 'true'
-    maxParallelForks = 3
+    maxParallelForks = 1
     testLogging.showStandardStreams = true
 }
 
