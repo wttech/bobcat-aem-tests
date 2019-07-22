@@ -1,0 +1,14 @@
+List Settings:
+- label: Build List Using
+  type: SELECT
+  value: Child pages
+- label: Child Depth
+  type: TEXTFIELD
+  value: 3
+- label: Parent Page
+  type: PATHBROWSER
+  value: /content/we-retail/us
+Item Settings:
+- label: Link items
+  type: CHECKBOX
+  value: true
