@@ -1,14 +1,13 @@
 language: java
+dist: trusty
 jdk:
   - oraclejdk8
 
-addons:
-  apt:
-    packages:
-      - oracle-java8-installer
-
 install: true
 
-sudo: false
-script:
-  - cd Aem64 && ./gradlew clean assemble
+env:
+  - DIR=Aem64
+  - DIR=aem64sp2
+  - DIR=aem65
+
+script: "cd $DIR && ./gradlew clean assemble"
