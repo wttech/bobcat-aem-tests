@@ -1,0 +1,4 @@
+Properties:
+- label: Link
+  type: PATHBROWSER
+  value: https://cognifide.github.io/bobcat/
