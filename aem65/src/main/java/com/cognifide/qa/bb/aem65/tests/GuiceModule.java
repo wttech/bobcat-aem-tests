@@ -2,6 +2,8 @@ package com.cognifide.qa.bb.aem65.tests;
 
 import com.cognifide.qa.bb.aem65.tests.pageobjects.TextComponent;
 import com.cognifide.qa.bb.aem65.tests.pageobjects.TextComponentImpl;
+import com.cognifide.qa.bb.aem65.tests.pageobjects.corecomponents.list.ListComponent;
+import com.cognifide.qa.bb.aem65.tests.pageobjects.corecomponents.list.ListComponentImpl;
 import com.cognifide.qa.bb.aem65.tests.pageobjects.corecomponents.title.TitleComponent;
 import com.cognifide.qa.bb.aem65.tests.pageobjects.corecomponents.title.TitleComponentImpl;
 import com.google.inject.AbstractModule;
@@ -21,5 +23,6 @@ public class GuiceModule extends AbstractModule {
   protected void configure() {
     bind(TextComponent.class).to(TextComponentImpl.class);
     bind(TitleComponent.class).to(TitleComponentImpl.class);
+    bind(ListComponent.class).to(ListComponentImpl.class);
   }
 }
