@@ -13,8 +13,7 @@ import com.cognifide.qa.bb.aem.core.component.configuration.ResourceFileLocation
 import com.cognifide.qa.bb.aem.core.pages.sling.SlingDataXMLBuilder;
 import com.cognifide.qa.bb.aem.core.pages.sling.SlingPageData;
 import com.cognifide.qa.bb.aem65.tests.AbstractAemAuthorTest;
-import com.cognifide.qa.bb.aem65.tests.pageobjects.corecomponents.title.TitleComponent;
-import com.cognifide.qa.bb.aem65.tests.pageobjects.corecomponents.title.TitleComponentImpl;
+import com.cognifide.qa.bb.aem65.tests.pageobjects.corecomponents.TitleComponent;
 import com.cognifide.qa.bb.aem65.tests.pages.TestPage;
 import com.cognifide.qa.bb.api.actions.ActionException;
 import com.cognifide.qa.bb.junit5.guice.Modules;
@@ -32,12 +31,13 @@ public class TitleComponentTest extends AbstractAemAuthorTest {
   private static final String TEST_PAGE_PATH = "/content/we-retail/us/en/titlecomponenttestpage";
 
   private TestPage page;
-  private TitleComponentImpl component;
+  private TitleComponent component;
 
   @BeforeEach
   public void createAndOpenTestPage() throws ActionException {
     controller.execute(AemActions.CREATE_PAGE_VIA_SLING, new SlingPageData(TEST_PAGE_PATH,
-        SlingDataXMLBuilder.buildFromFile("testpages/core-components/titleComponentTestPage.xml")));
+        SlingDataXMLBuilder.buildFromFile(
+            "testpages/core-components/title/titleComponentTestPage.xml")));
     page = bobcatPageFactory.create("/editor.html" + TEST_PAGE_PATH + ".html", TestPage.class);
     page.open();
   }
@@ -48,7 +48,7 @@ public class TitleComponentTest extends AbstractAemAuthorTest {
     controller.execute(AemActions.CONFIGURE_COMPONENT,
         new ConfigureComponentData("container", "Title", 0,
             new ResourceFileLocation("component-configs/core-components/title/text.yaml")));
-    component = (TitleComponentImpl) page.getContent(TitleComponent.class, 0);
+    component = page.getContent(TitleComponent.class, 0);
     assertThat(component.getInnerHtml().replaceAll("[\r\n]", ""))
         .as("Check if the text is configured")
         .matches(".*Checking if the text field can be configured.*");
@@ -60,7 +60,7 @@ public class TitleComponentTest extends AbstractAemAuthorTest {
     controller.execute(AemActions.CONFIGURE_COMPONENT,
         new ConfigureComponentData("container", "Title", 0,
             new ResourceFileLocation("component-configs/core-components/title/heading-type.yaml")));
-    component = (TitleComponentImpl) page.getContent(TitleComponent.class, 0);
+    component = page.getContent(TitleComponent.class, 0);
     assertThat(component.getTextHtmlTag()).as("Check if the heading type is configured")
         .matches("h3");
   }
@@ -71,7 +71,7 @@ public class TitleComponentTest extends AbstractAemAuthorTest {
     controller.execute(AemActions.CONFIGURE_COMPONENT,
         new ConfigureComponentData("container", "Title", 0,
             new ResourceFileLocation("component-configs/core-components/title/link.yaml")));
-    component = (TitleComponentImpl) page.getContent(TitleComponent.class, 0);
+    component = page.getContent(TitleComponent.class, 0);
     assertThat(component.getLinkHref()).as("Check if the link is configured")
         .matches("https://cognifide.github.io/bobcat/");
   }
