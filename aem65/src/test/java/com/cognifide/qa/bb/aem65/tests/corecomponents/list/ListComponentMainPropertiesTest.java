@@ -1,4 +1,4 @@
-package com.cognifide.qa.bb.aem65.tests.corecomponents;
+package com.cognifide.qa.bb.aem65.tests.corecomponents.list;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -8,7 +8,6 @@ import org.junit.jupiter.api.Test;
 import com.cognifide.qa.bb.aem.core.api.AemActions;
 import com.cognifide.qa.bb.aem.core.pages.sling.SlingDataXMLBuilder;
 import com.cognifide.qa.bb.aem.core.pages.sling.SlingPageData;
-import com.cognifide.qa.bb.aem65.tests.AbstractAemAuthorTest;
 import com.cognifide.qa.bb.aem65.tests.pages.TestPage;
 import com.cognifide.qa.bb.api.actions.ActionException;
 import com.cognifide.qa.bb.junit5.guice.Modules;
@@ -21,28 +20,15 @@ import io.qameta.allure.Feature;
 @Epic("Core Components authoring tests")
 @Feature("List Component configuration")
 @DisplayName("Author can configure for the List Component the...")
-public class ListComponentTest extends AbstractAemAuthorTest {
+public class ListComponentMainPropertiesTest extends AbstractListComponentTest {
 
-  private static final String COMPONENT_PAGE_PATH = "/content/we-retail/us/en/list-component-test-page";
-  private static final String[] LIST_ITEM_PATHS = {
-      "/content/we-retail/us/en/list-component-test-page/list-item-01",
-      "/content/we-retail/us/en/list-component-test-page/list-item-02",
-      "/content/we-retail/us/en/list-component-test-page/list-item-03",
-      "/content/we-retail/us/en/list-component-test-page/list-item-03/list-item-04"};
-
-  private TestPage page;
+  private static final String COMPONENT_PAGE_PATH = "/content/we-retail/us/en/blank-list-component-test-page";
 
   @BeforeEach
-  public void prepareTestDataAndOpenTestPage() throws ActionException {
+  public void createAndOpenComponentTestPage() throws ActionException {
     controller.execute(AemActions.CREATE_PAGE_VIA_SLING, new SlingPageData(COMPONENT_PAGE_PATH,
         SlingDataXMLBuilder.buildFromFile(
-            "testpages/core-components/list/listComponentTestPage.xml")));
-
-    for (int i = 0; i < LIST_ITEM_PATHS.length; i++) {
-      controller.execute(AemActions.CREATE_PAGE_VIA_SLING, new SlingPageData(LIST_ITEM_PATHS[i],
-          SlingDataXMLBuilder.buildFromFile(
-              String.format("testpages/core-components/list/listItemTestPage%s.xml", i + 1))));
-    }
+            "testpages/core-components/list/main-properties/blankListComponentTestPage.xml")));
 
     page = bobcatPageFactory.create("/editor.html" + COMPONENT_PAGE_PATH + ".html", TestPage.class);
     page.open();
@@ -68,25 +54,8 @@ public class ListComponentTest extends AbstractAemAuthorTest {
   public void configureToUseChildren() {
   }
 
-  @Test
-  @DisplayName("ordering and sorting schema")
-  public void configureOrderingAndSortingSchema() {
-
-  }
-
-  @Test
-  @DisplayName("max items number")
-  public void configureMaxItemsNumber() {
-  }
-
-  @Test
-  @DisplayName("item settings")
-  public void configureItemSettings() {
-
-  }
-
   @AfterEach
-  public void deleteTestData() {
-
+  public void deleteComponentTestPage() throws ActionException {
+    controller.execute(AemActions.DELETE_PAGE_VIA_SLING, new SlingPageData(COMPONENT_PAGE_PATH));
   }
 }

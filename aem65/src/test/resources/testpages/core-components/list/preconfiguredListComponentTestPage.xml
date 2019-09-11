@@ -4,26 +4,30 @@
   xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
   jcr:primaryType="cq:Page">
   <jcr:content
-    cq:tags="[we-retail:activity/biking]"
     cq:template="/conf/we-retail/settings/wcm/templates/content-page"
     jcr:primaryType="cq:PageContent"
-    jcr:title="List Item Two"
+    jcr:title="Preconfigured List Component Test Page"
     sling:resourceType="weretail/components/structure/page"
-    navTitle="List Item Two"
-    pageTitle="List Item Two">
+    navTitle="Preconfigured List Component Test Page"
+    pageTitle="Preconfigured List Component Test Page">
     <root
       jcr:primaryType="nt:unstructured"
       sling:resourceType="wcm/foundation/components/responsivegrid">
       <responsivegrid
         jcr:primaryType="nt:unstructured"
         sling:resourceType="wcm/foundation/components/responsivegrid">
-        <breadcrumb
+        <list
           jcr:primaryType="nt:unstructured"
-          sling:resourceType="weretail/components/content/breadcrumb"
-          absParent="5"
-          hideCurrent="true"
-          relParent="1"
-          startLevel="5"/>
+          sling:resourceType="weretail/components/content/list"
+          childDepth="3"
+          itemType="item"
+          linkItems="false"
+          listFrom="children"
+          parentPage="/content/we-retail/us/en/list-item-root"
+          showDescription="false"
+          showModificationDate="false"
+          sortOrder="asc"
+          tagsMatch="any"/>
       </responsivegrid>
     </root>
   </jcr:content>
