@@ -1,0 +1,4 @@
+List Settings:
+- label: Max Items
+  type: TEXTFIELD
+  value: 2

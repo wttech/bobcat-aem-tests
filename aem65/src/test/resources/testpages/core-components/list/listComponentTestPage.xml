@@ -6,10 +6,10 @@
   <jcr:content
     cq:template="/conf/we-retail/settings/wcm/templates/content-page"
     jcr:primaryType="cq:PageContent"
-    jcr:title="Blank List Component Test Page"
+    jcr:title="List Component Test Page"
     sling:resourceType="weretail/components/structure/page"
-    navTitle="Blank List Component Test Page"
-    pageTitle="Blank List Component Test Page">
+    navTitle="List Component Test Page"
+    pageTitle="List Component Test Page">
     <root
       jcr:primaryType="nt:unstructured"
       sling:resourceType="wcm/foundation/components/responsivegrid">
@@ -18,7 +18,16 @@
         sling:resourceType="wcm/foundation/components/responsivegrid">
         <list
           jcr:primaryType="nt:unstructured"
-          sling:resourceType="weretail/components/content/list"/>
+          sling:resourceType="weretail/components/content/list"
+          childDepth="3"
+          itemType="item"
+          linkItems="false"
+          listFrom="children"
+          parentPage="/content/we-retail/us/en/list-item-root"
+          showDescription="false"
+          showModificationDate="false"
+          sortOrder="asc"
+          tagsMatch="any"/>
       </responsivegrid>
     </root>
   </jcr:content>
