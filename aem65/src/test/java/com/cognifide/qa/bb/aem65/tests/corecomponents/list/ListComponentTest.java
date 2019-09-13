@@ -64,27 +64,51 @@ public class ListComponentTest extends AbstractAemAuthorTest {
 
   @Test
   @DisplayName("creation of list with static items")
-  public void configureToUseStaticItems() {
-    // TODO: Do this after working with the Well field in Bobcat is enabled
+  public void configureToUseStaticItems() throws ActionException {
+    controller.execute(AemActions.CONFIGURE_COMPONENT,
+        new ConfigureComponentData("container", "List", 0,
+            new ResourceFileLocation("component-configs/core-components/list/fixed-items.yaml")));
+    component = page.getContent(ListComponent.class, 0);
+    assertThat(component.getText()).as("Check if the list items are filtered correctly")
+        .matches("List Item One\n"
+            + "List Item Two\n"
+            + "List Item Three");
   }
 
   @Test
   @DisplayName("creation of list with search")
-  public void configureToUseSearch() {
-    // TODO: Do this after working with the Well field in Bobcat is enabled
+  public void configureToUseSearch() throws ActionException {
+    controller.execute(AemActions.CONFIGURE_COMPONENT,
+        new ConfigureComponentData("container", "List", 0,
+            new ResourceFileLocation("component-configs/core-components/list/search-items.yaml")));
+    component = page.getContent(ListComponent.class, 0);
+    assertThat(component.getText()).as("Check if the list items are filtered correctly")
+        .matches("List Item Four");
   }
 
   @Test
   @DisplayName("creation of list with tags ")
-  public void configureToUseTags() {
-    // TODO: Do this after working with the Well field in Bobcat is enabled
-    // TODO: Do this after creating pages with tags via Sling works in Bobcat
+  public void configureToUseTags() throws ActionException {
+    controller.execute(AemActions.CONFIGURE_COMPONENT,
+        new ConfigureComponentData("container", "List", 0,
+            new ResourceFileLocation("component-configs/core-components/list/tagged-items.yaml")));
+    component = page.getContent(ListComponent.class, 0);
+    assertThat(component.getText()).as("Check if the list items are filtered correctly")
+        .matches("List Item Three");
   }
 
   @Test
   @DisplayName("creation of list with children")
-  public void configureToUseChildren() {
-    // TODO: Do this after working with the Well field in Bobcat is enabled
+  public void configureToUseChildren() throws ActionException {
+    controller.execute(AemActions.CONFIGURE_COMPONENT,
+        new ConfigureComponentData("container", "List", 0,
+            new ResourceFileLocation("component-configs/core-components/list/child-items.yaml")));
+    component = page.getContent(ListComponent.class, 0);
+    assertThat(component.getText()).as("Check if the list items are filtered correctly")
+        .matches("List Item One\n"
+            + "List Item Two\n"
+            + "List Item Three\n"
+            + "List Item Four");
   }
 
   @Test

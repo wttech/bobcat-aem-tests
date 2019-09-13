@@ -1,1 +1,10 @@
-#TODO: Do this after working with the Well field in Bobcat is enabled
+List Settings:
+- label: Build List Using
+  type: SELECT
+  value: Child pages
+- label: Parent Page
+  type: PATHBROWSER
+  value: /content/we-retail/us/en/list-item-root
+- label: Child Depth
+  type: TEXTFIELD
+  value: 6

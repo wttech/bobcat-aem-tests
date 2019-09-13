@@ -1,7 +1,7 @@
 List Settings:
-  - label: Order By
-    type: SELECT
-    value: Title
-  - label: Sort Order
-    type: SELECT
-    value: Descending
+- label: Order By
+  type: SELECT
+  value: Title
+- label: Sort Order
+  type: SELECT
+  value: Descending

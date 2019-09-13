@@ -1,4 +1,4 @@
 Item Settings:
-  - label: Link items
-    type: CHECKBOX
-    value: true
+- label: Link items
+  type: CHECKBOX
+  value: true
