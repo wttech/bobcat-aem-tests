@@ -1,4 +1,4 @@
-package com.cognifide.qa.bb.aem65.tests.corecomponents.list;
+package com.cognifide.qa.bb.aem65.tests.corecomponents;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -94,7 +94,8 @@ public class ListComponentTest extends AbstractAemAuthorTest {
             new ResourceFileLocation("component-configs/core-components/list/tagged-items.yaml")));
     component = page.getContent(ListComponent.class, 0);
     assertThat(component.getText()).as("Check if the list items are filtered correctly")
-        .matches("List Item Three");
+        .matches("List Item Four\n"
+            + "List Item Three");
   }
 
   @Test
