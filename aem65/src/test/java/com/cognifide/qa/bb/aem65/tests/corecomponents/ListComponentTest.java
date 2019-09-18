@@ -29,7 +29,7 @@ import io.qameta.allure.Feature;
 public class ListComponentTest extends AbstractAemAuthorTest {
 
   private static final String COMPONENT_PAGE_PATH = "/content/we-retail/us/en/list-component-test-page";
-  private static final String LIST_ITEM_ROOT_PATH = "/content/we-retail/us/en/list-item-root/";
+  private static final String LIST_ITEM_ROOT_PATH = "/content/we-retail/us/en/list-item-root";
   private static final String[] LIST_ITEM_PATHS = {
       "/content/we-retail/us/en/list-item-root/list-item-one",
       "/content/we-retail/us/en/list-item-root/list-item-two",
@@ -39,9 +39,8 @@ public class ListComponentTest extends AbstractAemAuthorTest {
   private TestPage page;
   private ListComponent component;
 
-  //  TODO: Uncomment after creating pages with tags via Sling works in Bobcat
-//  @BeforeAll
-  public void createTestPagesForListItems() throws ActionException {
+  @BeforeEach
+  public void createAndOpenComponentTestPage() throws ActionException {
     controller.execute(AemActions.CREATE_PAGE_VIA_SLING, new SlingPageData(LIST_ITEM_ROOT_PATH,
         SlingDataXMLBuilder
             .buildFromFile("testpages/core-components/list/listItemRootTestPage.xml")));
@@ -50,10 +49,7 @@ public class ListComponentTest extends AbstractAemAuthorTest {
           SlingDataXMLBuilder.buildFromFile(
               String.format("testpages/core-components/list/listItemTestPage%s.xml", i + 1))));
     }
-  }
 
-  @BeforeEach
-  public void createAndOpenComponentTestPage() throws ActionException {
     controller.execute(AemActions.CREATE_PAGE_VIA_SLING, new SlingPageData(COMPONENT_PAGE_PATH,
         SlingDataXMLBuilder.buildFromFile(
             "testpages/core-components/list/listComponentTestPage.xml")));
@@ -154,15 +150,11 @@ public class ListComponentTest extends AbstractAemAuthorTest {
 
   @AfterEach
   public void deleteComponentTestPage() throws ActionException {
-    controller.execute(AemActions.DELETE_PAGE_VIA_SLING, new SlingPageData(COMPONENT_PAGE_PATH));
-  }
-
-  //  TODO: Uncomment after creating pages with tags via Sling works in Bobcat
-//  @AfterAll
-  public void deleteTestPagesForListItems() throws ActionException {
     controller.execute(AemActions.DELETE_PAGE_VIA_SLING, new SlingPageData(LIST_ITEM_ROOT_PATH));
     for (String path : LIST_ITEM_PATHS) {
       controller.execute(AemActions.DELETE_PAGE_VIA_SLING, new SlingPageData(path));
     }
+
+    controller.execute(AemActions.DELETE_PAGE_VIA_SLING, new SlingPageData(COMPONENT_PAGE_PATH));
   }
 }
