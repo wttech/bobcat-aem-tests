@@ -1,0 +1,10 @@
+Metadata:
+- label: Get caption from DAM
+  type: CHECKBOX
+  value: false
+- label: Caption
+  type: TEXTFIELD
+  value: Custom caption
+- label: Display caption as pop-up
+  type: CHECKBOX
+  value: false

@@ -1,0 +1,4 @@
+Metadata:
+- label: Image is decorative
+  type: CHECKBOX
+  value: true
