@@ -22,6 +22,10 @@ import com.cognifide.qa.bb.modules.BobcatRunModule;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 
+/**
+ * These tests verify if Bobcat can handle the configuration of the List Component
+ * https://opensource.adobe.com/aem-core-wcm-components/library/list.html
+ */
 @Modules(BobcatRunModule.class)
 @Epic("Core Components authoring tests")
 @Feature("List Component configuration")

@@ -22,6 +22,10 @@ import com.cognifide.qa.bb.modules.BobcatRunModule;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 
+/**
+ * These tests verify if Bobcat can handle the configuration of the Title Component
+ * https://opensource.adobe.com/aem-core-wcm-components/library/title.html
+ */
 @Modules(BobcatRunModule.class)
 @Epic("Core Components authoring tests")
 @Feature("Title Component configuration")
@@ -73,7 +77,7 @@ public class TitleComponentTest extends AbstractAemAuthorTest {
             new ResourceFileLocation("component-configs/core-components/title/link.yaml")));
     component = page.getContent(TitleComponent.class, 0);
     assertThat(component.getLinkHref()).as("Check if the link is configured")
-        .matches("https://cognifide.github.io/bobcat/");
+        .matches(".*/content/we-retail/us/en.html");
   }
 
   @AfterEach

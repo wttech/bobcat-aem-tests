@@ -1,7 +1,7 @@
 package com.cognifide.qa.bb.aem65.tests.pageobjects.corecomponents;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -26,12 +26,8 @@ public class ListComponent {
   }
 
   public List<String> getLinks() {
-    List<String> links = new ArrayList<>();
-    for (WebElement element :
-        linkElements) {
-      links.add(element.getAttribute(Attributes.HREF));
-    }
-    return links;
+    return linkElements.stream().map(element -> element.getAttribute(Attributes.HREF)).collect(
+        Collectors.toList());
   }
 
 }
