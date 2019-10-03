@@ -19,7 +19,7 @@ Each folder contains tests for specific AEM version:
 ## Building the project
 Run the following:
 ```
-./gradlew clean assembly
+./gradlew clean assemble
 ```
 
 ## Running tests
