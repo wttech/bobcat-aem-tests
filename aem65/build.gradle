@@ -36,7 +36,7 @@ def profiles = [
 ]
 
 task loadProperties {
-    System.setProperty("bobcat.config", "yaml");
+    System.setProperty("bobcat.config", "yaml")
     def profile = System.getProperty('profile', 'default')
     if (!profile.equals('default')) {
         System.setProperty("bobcat.config.contexts", profiles[profile])
