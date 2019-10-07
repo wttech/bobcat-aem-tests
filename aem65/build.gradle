@@ -17,7 +17,7 @@ apply plugin: 'io.qameta.allure'
 
 sourceCompatibility = 1.8
 
-def bobcatVersion = System.getProperty("bobcat.version", "2.1.1-SNAPSHOT")
+def bobcatVersion = System.getProperty("bobcat.version", "2.1.0")
 
 repositories {
     mavenLocal()
@@ -36,7 +36,7 @@ def profiles = [
 ]
 
 task loadProperties {
-    System.setProperty("bobcat.config", "yaml");
+    System.setProperty("bobcat.config", "yaml")
     def profile = System.getProperty('profile', 'default')
     if (!profile.equals('default')) {
         System.setProperty("bobcat.config.contexts", profiles[profile])
