@@ -1,0 +1,15 @@
+List Settings:
+- label: Build List Using
+  type: SELECT
+  value: Tags
+- label: Parent Page
+  type: PATHBROWSER
+  value: /content/we-retail/us/en/list-item-root
+- label: Match
+  type: SELECT
+  value: Any tag
+- label: Tags
+  type: TAGBROWSER
+  value:
+  - hiking
+  - running
