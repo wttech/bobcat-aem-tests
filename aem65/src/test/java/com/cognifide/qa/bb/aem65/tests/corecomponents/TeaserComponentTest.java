@@ -151,14 +151,6 @@ public class TeaserComponentTest extends AbstractAemAuthorTest {
                         new ResourceFileLocation("component-configs/core-components.teaser/oneCallToActionButton.yaml")));
     }
 
-//    @Test
-//    @DisplayName("more than one call to action button")
-//    public void configureActionLink() throws ActionException {
-//        controller.execute(AemActions.CONFIGURE_COMPONENT,
-//                new ConfigureComponentData("container", "Teaser", 0,
-//                        new ResourceFileLocation("component-configs/core-components.teaser/actionLink.yaml")));
-//    }
-
     @AfterEach
     public void deleteTestPage() throws ActionException {
         controller.execute(AemActions.DELETE_PAGE_VIA_SLING, new SlingPageData(TEST_PAGE_PATH));
