@@ -51,7 +51,7 @@ public class TeaserComponentTest extends AbstractAemAuthorTest {
     @DisplayName("content - check if content class is visible")
     public void configureAnyContent() throws ActionException {
         controller.execute(AemActions.CONFIGURE_COMPONENT,
-                new ConfigureComponentData("container", "Teaser", 0,
+                new ConfigureComponentData("container", "Teaser (v1)", 0,
                         new ResourceFileLocation("component-configs/core-components/teaser/title.yaml")));
         component = (TeaserComponentImpl) page.getContent(TeaserComponent.class,0);
         component.checkIfContentClassIsVisible();
@@ -61,7 +61,7 @@ public class TeaserComponentTest extends AbstractAemAuthorTest {
     @DisplayName("image")
     public void configureImageTeaser() throws ActionException {
         controller.execute(AemActions.CONFIGURE_COMPONENT,
-                new ConfigureComponentData("container", "Teaser", 0,
+                new ConfigureComponentData("container", "Teaser (v1)", 0,
                         new ResourceFileLocation("component-configs/core-components/teaser/image.yaml")));
         component = (TeaserComponentImpl) page.getContent(TeaserComponent.class, 0);
         assertThat(component.getTeaserImage())
@@ -73,7 +73,7 @@ public class TeaserComponentTest extends AbstractAemAuthorTest {
     @DisplayName("title")
     public void configureTitle() throws ActionException {
         controller.execute(AemActions.CONFIGURE_COMPONENT,
-                new ConfigureComponentData("container", "Teaser", 0,
+                new ConfigureComponentData("container", "Teaser (v1)", 0,
                         new ResourceFileLocation("component-configs/core-components/teaser/title.yaml")));
         component = (TeaserComponentImpl) page.getContent(TeaserComponent.class,0);
         assertThat(component.getTeaserTitle().replaceAll("[\r\n]", "").replaceAll("^\\s+","").replaceFirst("\\s++$", ""))
@@ -85,11 +85,12 @@ public class TeaserComponentTest extends AbstractAemAuthorTest {
     @DisplayName("link on title")
     public void configureTitleLink() throws ActionException {
         controller.execute(AemActions.CONFIGURE_COMPONENT,
-                new ConfigureComponentData("container", "Teaser", 0,
+                new ConfigureComponentData("container", "Teaser (v1)", 0,
                         new ResourceFileLocation("component-configs/core-components/teaser/titleLink.yaml")));
         component = (TeaserComponentImpl) page.getContent(TeaserComponent.class, 0);
-        assertThat(component.getTeaserTitleLink()).as("Check if the link is configured")
-                .matches("https://cognifide.github.io/bobcat/");
+        assertThat(component.getTeaserTitleLink().replaceAll("[\r\n]", "").replaceAll("\"","").replaceAll("<a class=","").replaceFirst("cmp-teaser__title-link", "").replaceFirst(">This is teaser title</a>", "").replaceAll("^\\s+","").replaceFirst("\\s++$", ""))
+                .as("Check if the link is configured")
+                .matches("href=/content/core-components-examples/library/teaser.html");
     }
 
 
@@ -97,7 +98,7 @@ public class TeaserComponentTest extends AbstractAemAuthorTest {
     @DisplayName("title taken from linked page")
     public void configureTitleFromLinkedPage() throws ActionException {
         controller.execute(AemActions.CONFIGURE_COMPONENT,
-                new ConfigureComponentData("container", "Teaser", 0,
+                new ConfigureComponentData("container", "Teaser (v1)", 0,
                         new ResourceFileLocation("component-configs/core-components/teaser/titleFromLinkedPage.yaml")));
         component = (TeaserComponentImpl) page.getContent(TeaserComponent.class,0);
         assertThat(component.getTeaserTitleFromLinkedPage().replaceAll("[\r\n]", "").replaceAll("^\\s+","").replaceFirst("\\s++$", ""))
@@ -109,7 +110,7 @@ public class TeaserComponentTest extends AbstractAemAuthorTest {
     @DisplayName("description")
     public void configureDescription() throws ActionException {
         controller.execute(AemActions.CONFIGURE_COMPONENT,
-                new ConfigureComponentData("container", "Teaser", 0,
+                new ConfigureComponentData("container", "Teaser (v1)", 0,
                         new ResourceFileLocation("component-configs/core-components/teaser/description.yaml")));
         component = (TeaserComponentImpl) page.getContent(TeaserComponent.class,0);
         assertThat(component.getTeaserDescription().replaceAll("[\r\n]", "").replaceAll("^\\s+","").replaceFirst("\\s++$", ""))
@@ -121,7 +122,7 @@ public class TeaserComponentTest extends AbstractAemAuthorTest {
     @DisplayName("empty description taken from linked page")
     public void configureDescriptionFromLinkedPage() throws ActionException {
         controller.execute(AemActions.CONFIGURE_COMPONENT,
-                new ConfigureComponentData("container", "Teaser", 0,
+                new ConfigureComponentData("container", "Teaser (v1)", 0,
                         new ResourceFileLocation("component-configs/core-components/teaser/descriptionEmptyFromLinkedPage.yaml")));
         component = (TeaserComponentImpl) page.getContent(TeaserComponent.class,0);
         component.checkDescriptionVisibility();
@@ -131,20 +132,12 @@ public class TeaserComponentTest extends AbstractAemAuthorTest {
     @DisplayName("description taken from linked page")
     public void configureDescriptionFromLinkedPage2() throws ActionException {
         controller.execute(AemActions.CONFIGURE_COMPONENT,
-                new ConfigureComponentData("container", "Teaser", 0,
+                new ConfigureComponentData("container", "Teaser (v1)", 0,
                         new ResourceFileLocation("component-configs/core-components/teaser/descriptionFromLinkedPage.yaml")));
         component = (TeaserComponentImpl) page.getContent(TeaserComponent.class,0);
         assertThat(component.getTeaserDescriptionFromLinkedPage())
                 .as("Check if the description is taken from linked page")
                 .matches("Test description from Properties");
-    }
-
-    @Test
-    @DisplayName("one call to action button")
-    public void configureOneCallToActionButton() throws ActionException {
-        controller.execute(AemActions.CONFIGURE_COMPONENT,
-                new ConfigureComponentData("container", "Teaser", 0,
-                        new ResourceFileLocation("component-configs/core-components/teaser/oneCallToActionButton.yaml")));
     }
 
     @AfterEach

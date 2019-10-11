@@ -15,10 +15,6 @@ public interface TeaserComponent {
 
     String getTeaserTitleFromLinkedPage();
 
-    String getTeaserActionContainer();
-
-    String getTeaserActionLink();
-
     String getTeaserDescriptionFromLinkedPage();
 
     void checkDescriptionVisibility();

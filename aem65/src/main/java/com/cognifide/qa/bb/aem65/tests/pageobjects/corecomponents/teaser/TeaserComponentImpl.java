@@ -33,12 +33,6 @@ public class TeaserComponentImpl implements TeaserComponent {
     @FindBy (css = ".cmp-teaser__description > p")
     private WebElement description;
 
-    @FindBy (css = ".cmp-teaser__action-container")
-    private WebElement actionContainer;
-
-    @FindBy (css = ".cmp-teaser__action-link")
-    private WebElement actionLink;
-
     @FindBy (css = ".cmp-teaser__description")
     private List<WebElement> elements;
 
@@ -64,11 +58,7 @@ public class TeaserComponentImpl implements TeaserComponent {
 
     public String getTeaserTitleFromLinkedPage() { return titleLink.getAttribute(HtmlTags.Properties.INNER_HTML); }
 
-    public String getTeaserTitleLink () { return titleLink.getAttribute(HtmlTags.Attributes.HREF);}
+    public String getTeaserTitleLink () { return titleLink.getAttribute(HtmlTags.Properties.OUTER_HTML);}
 
     public String getTeaserDescription () { return description.getAttribute(HtmlTags.Properties.INNER_HTML);}
-
-    public String getTeaserActionContainer () { return actionContainer.getAttribute(HtmlTags.Properties.INNER_HTML);}
-
-    public String getTeaserActionLink() { return actionLink.getAttribute(HtmlTags.Attributes.HREF); }
 }
