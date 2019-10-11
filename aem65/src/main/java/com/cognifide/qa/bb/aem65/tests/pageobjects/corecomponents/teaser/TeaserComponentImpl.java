@@ -21,9 +21,6 @@ public class TeaserComponentImpl implements TeaserComponent {
     @FindBy (css = ".cmp-image__image")
     private WebElement image;
 
-    @FindBy (css = ".cmp-teaser__content")
-    private WebElement content;
-
     @FindBy (css = ".cmp-teaser__title")
     private WebElement title;
 
@@ -44,10 +41,6 @@ public class TeaserComponentImpl implements TeaserComponent {
 
     public void checkDescriptionVisibility(){
         Assert.isTrue(elements.isEmpty(),"Element exist when it shouldn't");
-    }
-
-    public void checkIfContentClassIsVisible(){
-        Assert.isTrue(content.isDisplayed(),"Error - Missing class content");
     }
 
     public String getTeaserDescriptionFromLinkedPage() { return isDescriptionVisible.getAttribute(HtmlTags.Properties.INNER_HTML); }

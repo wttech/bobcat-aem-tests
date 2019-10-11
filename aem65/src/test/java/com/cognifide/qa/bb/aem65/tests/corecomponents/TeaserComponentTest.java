@@ -48,16 +48,6 @@ public class TeaserComponentTest extends AbstractAemAuthorTest {
     }
 
     @Test
-    @DisplayName("content - check if content class is visible")
-    public void configureAnyContent() throws ActionException {
-        controller.execute(AemActions.CONFIGURE_COMPONENT,
-                new ConfigureComponentData("container", "Teaser (v1)", 0,
-                        new ResourceFileLocation("component-configs/core-components/teaser/title.yaml")));
-        component = (TeaserComponentImpl) page.getContent(TeaserComponent.class,0);
-        component.checkIfContentClassIsVisible();
-    }
-
-    @Test
     @DisplayName("image")
     public void configureImageTeaser() throws ActionException {
         controller.execute(AemActions.CONFIGURE_COMPONENT,
