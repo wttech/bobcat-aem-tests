@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+  xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0"
+  xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+  jcr:primaryType="cq:Page">
+  <jcr:content
+    cq:template="/conf/we-retail/settings/wcm/templates/content-page"
+    jcr:primaryType="cq:PageContent"
+    jcr:title="List Component Test Page"
+    sling:resourceType="weretail/components/structure/page"
+    navTitle="List Component Test Page"
+    pageTitle="List Component Test Page">
+    <root
+      jcr:primaryType="nt:unstructured"
+      sling:resourceType="wcm/foundation/components/responsivegrid">
+      <responsivegrid
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="wcm/foundation/components/responsivegrid">
+        <list
+          jcr:primaryType="nt:unstructured"
+          sling:resourceType="weretail/components/content/list"
+          childDepth="3"
+          itemType="item"
+          linkItems="false"
+          listFrom="children"
+          parentPage="/content/we-retail/us/en/list-item-root"
+          showDescription="false"
+          showModificationDate="false"
+          sortOrder="asc"
+          tagsMatch="any"/>
+      </responsivegrid>
+    </root>
+  </jcr:content>
+</jcr:root>

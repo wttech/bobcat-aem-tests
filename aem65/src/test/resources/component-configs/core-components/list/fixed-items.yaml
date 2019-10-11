@@ -1,0 +1,15 @@
+List Settings:
+- label: Build List Using
+  type: SELECT
+  value: Fixed list
+- type: MULTIFIELD
+  value:
+  - item:
+    - type: PATHBROWSER
+      value: /content/we-retail/us/en/list-item-root/list-item-one
+  - item:
+    - type: PATHBROWSER
+      value: /content/we-retail/us/en/list-item-root/list-item-two
+  - item:
+    - type: PATHBROWSER
+      value: /content/we-retail/us/en/list-item-root/list-item-three

@@ -1,4 +1,4 @@
-package com.cognifide.qa.bb.aem65.tests.pageobjects.corecomponents.title;
+package com.cognifide.qa.bb.aem65.tests.pageobjects.corecomponents;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -10,7 +10,7 @@ import com.cognifide.qa.bb.qualifier.PageObject;
 import com.google.inject.Inject;
 
 @PageObject(css = ".cmp-title")
-public class TitleComponentImpl implements TitleComponent {
+public class TitleComponent {
 
   @Inject
   @CurrentScope

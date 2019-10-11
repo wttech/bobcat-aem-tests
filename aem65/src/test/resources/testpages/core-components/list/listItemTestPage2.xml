@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+  xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0"
+  xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+  jcr:primaryType="cq:Page">
+  <jcr:content
+    cq:tags="[we-retail:activity/biking]"
+    cq:template="/conf/we-retail/settings/wcm/templates/content-page"
+    jcr:primaryType="cq:PageContent"
+    jcr:title="List Item Two"
+    sling:resourceType="weretail/components/structure/page"
+    navTitle="List Item Two"
+    pageTitle="List Item Two">
+    <root
+      jcr:primaryType="nt:unstructured"
+      sling:resourceType="wcm/foundation/components/responsivegrid">
+      <responsivegrid
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="wcm/foundation/components/responsivegrid">
+        <breadcrumb
+          jcr:primaryType="nt:unstructured"
+          sling:resourceType="weretail/components/content/breadcrumb"
+          absParent="5"
+          hideCurrent="true"
+          relParent="1"
+          startLevel="5"/>
+      </responsivegrid>
+    </root>
+  </jcr:content>
+</jcr:root>

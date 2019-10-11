@@ -1,0 +1,7 @@
+Metadata:
+- label: Get alternative text from DAM
+  type: CHECKBOX
+  value: false
+- label: Alternative Text *
+  type: TEXTFIELD
+  value: Custom alt text
