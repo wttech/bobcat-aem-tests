@@ -1,0 +1,4 @@
+Text:
+  - label: Title
+    type: TEXTFIELD
+    value: This is teaser title

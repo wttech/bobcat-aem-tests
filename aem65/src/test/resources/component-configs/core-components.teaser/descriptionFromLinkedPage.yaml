@@ -1,0 +1,17 @@
+Link & Actions:
+  - label: Link
+    type: PATHBROWSER
+    value: /content/we-retail/us/en/teaserComponentTestPage
+
+Text:
+  - label: Title
+    type: TEXTFIELD
+    value: This is teaser title
+
+  - label: Description
+    type: RICHTEXT
+    value: This is teaser description
+
+  - label: Get description from linked page
+    type: CHECKBOX
+    value: true
