@@ -30,109 +30,112 @@ import static org.assertj.core.api.Assertions.assertThat;
 @Feature("Teaser Component configuration")
 @DisplayName("Author can configure for Teaser Component the...")
 
-
 public class TeaserComponentTest extends AbstractAemAuthorTest {
 
-    private static final String TEST_PAGE_PATH = "/content/core-components-examples/library/teaserComponentTestPage";
+  private static final String TEST_PAGE_PATH = "/content/core-components-examples/library/teaserComponentTestPage";
 
-    private TestPage page;
-    private TeaserComponent component;
+  private TestPage page;
+  private TeaserComponent component;
 
-    @BeforeEach
-    public void createAndOpenTestPage() throws ActionException {
-        controller.execute(AemActions.CREATE_PAGE_VIA_SLING, new SlingPageData(TEST_PAGE_PATH,
-                SlingDataXMLBuilder.buildFromFile("testpages/core-components/teaserComponentTestPage.xml")));
-        page = bobcatPageFactory.create("/editor.html" + TEST_PAGE_PATH + ".html", TestPage.class);
-        page.open();
-    }
+  @BeforeEach
+  public void createAndOpenTestPage() throws ActionException {
+    controller.execute(AemActions.CREATE_PAGE_VIA_SLING, new SlingPageData(TEST_PAGE_PATH,
+        SlingDataXMLBuilder
+            .buildFromFile("testpages/core-components/teaserComponentTestPage.xml")));
+    page = bobcatPageFactory.create("/editor.html" + TEST_PAGE_PATH + ".html", TestPage.class);
+    page.open();
+  }
 
-    @Test
-    @DisplayName("image")
-    public void configureImageTeaser() throws ActionException {
-        controller.execute(AemActions.CONFIGURE_COMPONENT,
-                new ConfigureComponentData("container", "Teaser (v1)", 0,
-                        new ResourceFileLocation("component-configs/core-components/teaser/image.yaml")));
-        component = page.getContent(TeaserComponent.class, 0);
-        assertThat(component.getTeaserImage())
-                .as("Check if image is configured")
-                .matches("Gray lava rock formation");
-    }
+  @Test
+  @DisplayName("image")
+  public void configureImageTeaser() throws ActionException {
+    controller.execute(AemActions.CONFIGURE_COMPONENT,
+        new ConfigureComponentData("container", "Teaser (v1)", 0,
+            new ResourceFileLocation("component-configs/core-components/teaser/image.yaml")));
+    component = page.getContent(TeaserComponent.class, 0);
+    assertThat(component.getTeaserImage())
+        .as("Check if image is configured")
+        .matches("Gray lava rock formation");
+  }
 
-    @Test
-    @DisplayName("title")
-    public void configureTitle() throws ActionException {
-        controller.execute(AemActions.CONFIGURE_COMPONENT,
-                new ConfigureComponentData("container", "Teaser (v1)", 0,
-                        new ResourceFileLocation("component-configs/core-components/teaser/title.yaml")));
-        component = page.getContent(TeaserComponent.class, 0);
-        assertThat(component.getTeaserTitle())
-                .as("Check if the title is configured")
-                .matches("This is teaser title");
-    }
+  @Test
+  @DisplayName("title")
+  public void configureTitle() throws ActionException {
+    controller.execute(AemActions.CONFIGURE_COMPONENT,
+        new ConfigureComponentData("container", "Teaser (v1)", 0,
+            new ResourceFileLocation("component-configs/core-components/teaser/title.yaml")));
+    component = page.getContent(TeaserComponent.class, 0);
+    assertThat(component.getTeaserTitle())
+        .as("Check if the title is configured")
+        .matches("This is teaser title");
+  }
 
-    @Test
-    @DisplayName("link on title")
-    public void configureTitleLink() throws ActionException {
-        controller.execute(AemActions.CONFIGURE_COMPONENT,
-                new ConfigureComponentData("container", "Teaser (v1)", 0,
-                        new ResourceFileLocation("component-configs/core-components/teaser/titleLink.yaml")));
-        component = page.getContent(TeaserComponent.class, 0);
-        assertThat(component.getTeaserTitleLink())
-                .as("Check if the link is configured")
-                .endsWith("/content/core-components-examples/library/teaser.html");
-    }
+  @Test
+  @DisplayName("link on title")
+  public void configureTitleLink() throws ActionException {
+    controller.execute(AemActions.CONFIGURE_COMPONENT,
+        new ConfigureComponentData("container", "Teaser (v1)", 0,
+            new ResourceFileLocation("component-configs/core-components/teaser/titleLink.yaml")));
+    component = page.getContent(TeaserComponent.class, 0);
+    assertThat(component.getTeaserTitleLink())
+        .as("Check if the link is configured")
+        .endsWith("/content/core-components-examples/library/teaser.html");
+  }
 
 
-    @Test
-    @DisplayName("title taken from linked page")
-    public void configureTitleFromLinkedPage() throws ActionException {
-        controller.execute(AemActions.CONFIGURE_COMPONENT,
-                new ConfigureComponentData("container", "Teaser (v1)", 0,
-                        new ResourceFileLocation("component-configs/core-components/teaser/titleFromLinkedPage.yaml")));
-        component = page.getContent(TeaserComponent.class, 0);
-        assertThat(component.getTeaserTitleFromLinkedPage())
-                .as("Check if the title is taken from linked page")
-                .matches("Women");
-    }
+  @Test
+  @DisplayName("title taken from linked page")
+  public void configureTitleFromLinkedPage() throws ActionException {
+    controller.execute(AemActions.CONFIGURE_COMPONENT,
+        new ConfigureComponentData("container", "Teaser (v1)", 0,
+            new ResourceFileLocation(
+                "component-configs/core-components/teaser/titleFromLinkedPage.yaml")));
+    component = page.getContent(TeaserComponent.class, 0);
+    assertThat(component.getTeaserTitleFromLinkedPage())
+        .as("Check if the title is taken from linked page")
+        .matches("Women");
+  }
 
-    @Test
-    @DisplayName("description")
-    public void configureDescription() throws ActionException {
-        controller.execute(AemActions.CONFIGURE_COMPONENT,
-                new ConfigureComponentData("container", "Teaser (v1)", 0,
-                        new ResourceFileLocation("component-configs/core-components/teaser/description.yaml")));
-        component = page.getContent(TeaserComponent.class, 0);
-        assertThat(component.getTeaserDescription())
-                .as("Check if the descriotion is configured")
-                .matches("This is teaser description");
-    }
+  @Test
+  @DisplayName("description")
+  public void configureDescription() throws ActionException {
+    controller.execute(AemActions.CONFIGURE_COMPONENT,
+        new ConfigureComponentData("container", "Teaser (v1)", 0,
+            new ResourceFileLocation("component-configs/core-components/teaser/description.yaml")));
+    component = page.getContent(TeaserComponent.class, 0);
+    assertThat(component.getTeaserDescription())
+        .as("Check if the description is configured")
+        .matches("This is teaser description");
+  }
 
-    @Test
-    @DisplayName("empty description taken from linked page")
-    public void configureDescriptionFromLinkedPage() throws ActionException {
-        controller.execute(AemActions.CONFIGURE_COMPONENT,
-                new ConfigureComponentData("container", "Teaser (v1)", 0,
-                        new ResourceFileLocation("component-configs/core-components/teaser/descriptionEmptyFromLinkedPage.yaml")));
-        component = page.getContent(TeaserComponent.class, 0);
-        assertThat(component.isTeaserDescriptionEmpty())
-                .as("Check if empty description isn't added into component")
-                .isTrue();
-    }
+  @Test
+  @DisplayName("empty description taken from linked page")
+  public void configureDescriptionFromLinkedPage() throws ActionException {
+    controller.execute(AemActions.CONFIGURE_COMPONENT,
+        new ConfigureComponentData("container", "Teaser (v1)", 0,
+            new ResourceFileLocation(
+                "component-configs/core-components/teaser/descriptionEmptyFromLinkedPage.yaml")));
+    component = page.getContent(TeaserComponent.class, 0);
+    assertThat(component.isTeaserDescriptionEmpty())
+        .as("Check if empty description isn't added into component")
+        .isTrue();
+  }
 
-    @Test
-    @DisplayName("description taken from linked page")
-    public void configureDescriptionFromLinkedPage2() throws ActionException {
-        controller.execute(AemActions.CONFIGURE_COMPONENT,
-                new ConfigureComponentData("container", "Teaser (v1)", 0,
-                        new ResourceFileLocation("component-configs/core-components/teaser/descriptionFromLinkedPage.yaml")));
-        component = page.getContent(TeaserComponent.class, 0);
-        assertThat(component.getTeaserDescriptionFromLinkedPage())
-                .as("Check if the description is taken from linked page")
-                .matches("Test description from Properties");
-    }
+  @Test
+  @DisplayName("description taken from linked page")
+  public void configureDescriptionFromLinkedPage2() throws ActionException {
+    controller.execute(AemActions.CONFIGURE_COMPONENT,
+        new ConfigureComponentData("container", "Teaser (v1)", 0,
+            new ResourceFileLocation(
+                "component-configs/core-components/teaser/descriptionFromLinkedPage.yaml")));
+    component = page.getContent(TeaserComponent.class, 0);
+    assertThat(component.getTeaserDescriptionFromLinkedPage())
+        .as("Check if the description is taken from linked page")
+        .matches("Test description from Properties");
+  }
 
-    @AfterEach
-    public void deleteTestPage() throws ActionException {
-        controller.execute(AemActions.DELETE_PAGE_VIA_SLING, new SlingPageData(TEST_PAGE_PATH));
-    }
+  @AfterEach
+  public void deleteTestPage() throws ActionException {
+    controller.execute(AemActions.DELETE_PAGE_VIA_SLING, new SlingPageData(TEST_PAGE_PATH));
+  }
 }
