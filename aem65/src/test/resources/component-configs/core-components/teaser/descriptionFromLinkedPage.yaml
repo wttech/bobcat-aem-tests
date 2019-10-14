@@ -1,7 +1,7 @@
 Link & Actions:
   - label: Link
     type: PATHBROWSER
-    value: /content/we-retail/us/en/teaserComponentTestPage
+    value: /content/core-components-examples/library/teaserComponentTestPage
 
 Text:
   - label: Title

@@ -31,7 +31,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class TeaserComponentTest extends AbstractAemAuthorTest {
 
-    private static final String TEST_PAGE_PATH = "/content/we-retail/us/en/teaserComponentTestPage";
+    private static final String TEST_PAGE_PATH = "/content/core-components-examples/library/teaserComponentTestPage";
 
     private TestPage page;
     private TeaserComponentImpl component;
