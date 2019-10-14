@@ -1,0 +1,8 @@
+Properties:
+  - label: Text
+    type: TEXTFIELD
+    value: Custom button text
+Accessibility:
+  - label: Label
+    type: TEXTFIELD
+    value: Custom aria label
