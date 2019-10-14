@@ -1,8 +1,4 @@
 Text:
-  - label: Title
-    type: TEXTFIELD
-    value: This is teaser title
-
   - label: Description
     type: RICHTEXT
     value: This is teaser description

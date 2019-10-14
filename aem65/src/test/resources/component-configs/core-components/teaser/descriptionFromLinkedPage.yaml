@@ -4,14 +4,6 @@ Link & Actions:
     value: /content/core-components-examples/library/teaserComponentTestPage
 
 Text:
-  - label: Title
-    type: TEXTFIELD
-    value: This is teaser title
-
-  - label: Description
-    type: RICHTEXT
-    value: This is teaser description
-
   - label: Get description from linked page
     type: CHECKBOX
     value: true

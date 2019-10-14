@@ -1,8 +1,3 @@
-Text:
-  - label: Title
-    type: TEXTFIELD
-    value: This is teaser title
-
 Link & Actions:
   - label: Link
     type: PATHBROWSER
