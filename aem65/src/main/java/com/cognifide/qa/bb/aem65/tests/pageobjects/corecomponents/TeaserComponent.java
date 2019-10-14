@@ -1,18 +1,16 @@
-package com.cognifide.qa.bb.aem65.tests.pageobjects.corecomponents.teaser;
+package com.cognifide.qa.bb.aem65.tests.pageobjects.corecomponents;
 
 import com.cognifide.qa.bb.constants.HtmlTags;
 import com.cognifide.qa.bb.qualifier.CurrentScope;
 import com.cognifide.qa.bb.qualifier.PageObject;
-import com.cognifide.qa.bb.wait.BobcatWait;
 import com.google.inject.Inject;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.springframework.util.Assert;
 
 import java.util.List;
 
 @PageObject (css = ".cmp-teaser")
-public class TeaserComponentImpl implements TeaserComponent {
+public class TeaserComponent {
 
     @Inject
     @CurrentScope
@@ -36,12 +34,7 @@ public class TeaserComponentImpl implements TeaserComponent {
     @FindBy (css = ".cmp-teaser__description")
     private WebElement isDescriptionVisible;
 
-    @Inject
-    private BobcatWait bobcatWait;
-
-    public void checkDescriptionVisibility(){
-        Assert.isTrue(elements.isEmpty(),"Element exist when it shouldn't");
-    }
+    public boolean isTeaserDescriptionEmpty () { return elements.isEmpty();}
 
     public String getTeaserDescriptionFromLinkedPage() { return isDescriptionVisible.getAttribute(HtmlTags.Properties.INNER_HTML); }
 
