@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+  jcr:primaryType="cq:Page">
+  <jcr:content
+    cq:template="/conf/we-retail/settings/wcm/templates/content-page"
+    jcr:primaryType="cq:PageContent"
+    jcr:title="Content Fragment Component Test Page"
+    sling:resourceType="weretail/components/structure/page"
+    navTitle="Content Fragment Component Test Page"
+    pageTitle="Content Fragment Component Test Page">
+    <root
+      jcr:primaryType="nt:unstructured"
+      sling:resourceType="wcm/foundation/components/responsivegrid">
+      <responsivegrid
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="wcm/foundation/components/responsivegrid">
+        <contentfragment
+          jcr:primaryType="nt:unstructured"
+          sling:resourceType="weretail/components/content/contentfragment"
+          displayMode="singleText"
+          elementNames="main"
+          fragmentPath="/content/dam/we-retail/en/experiences/48-hours-of-wilderness/48-hours-of-wilderness"
+          variationName="master"/>
+        <contentfragment_797926957
+          jcr:primaryType="nt:unstructured"
+          sling:resourceType="weretail/components/content/contentfragment"
+          displayMode="multi"
+          elementNames="question"
+          fragmentPath="/content/dam/we-retail/en/faqs/company/real-company"
+          paragraphScope="all"
+          variationName="master"/>
+      </responsivegrid>
+    </root>
+  </jcr:content>
+</jcr:root>

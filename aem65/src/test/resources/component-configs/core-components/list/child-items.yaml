@@ -6,5 +6,5 @@ List Settings:
   type: PATHBROWSER
   value: /content/we-retail/us/en/list-item-root
 - label: Child Depth
-  type: TEXTFIELD
+  type: NUMBER_INPUT
   value: 6

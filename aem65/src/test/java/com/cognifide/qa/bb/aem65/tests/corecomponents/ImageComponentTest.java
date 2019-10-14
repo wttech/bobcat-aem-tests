@@ -93,7 +93,7 @@ public class ImageComponentTest extends AbstractAemAuthorTest {
             new ResourceFileLocation("component-configs/core-components/image/link.yaml")));
     component = page.getContent(ImageComponent.class, 0);
     assertThat(component.getLink()).as("Check if the link is configured")
-        .endsWith("/content/we-retail/us/en.html");
+        .endsWith("https://cognifide.github.io/bobcat/");
   }
 
   @AfterEach
