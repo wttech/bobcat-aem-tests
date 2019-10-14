@@ -22,6 +22,10 @@ import com.cognifide.qa.bb.modules.BobcatRunModule;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 
+/**
+ * These tests verify if Bobcat can handle the configuration of the Content Fragment Component
+ * https://opensource.adobe.com/aem-core-wcm-components/library/content-fragment.html
+ */
 @Modules(BobcatRunModule.class)
 @Epic("Core Components authoring tests")
 @Feature("Content Fragment Component configuration")
