@@ -14,7 +14,7 @@ public class ContentFragmentComponent {
   private WebElement component;
 
   public String getDataPath() {
-    return component.getAttribute("data-path");
+    return component.getAttribute("data-cmp-contentfragment-path");
   }
 
   public String getText() {
