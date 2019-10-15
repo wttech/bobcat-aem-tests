@@ -1,0 +1,4 @@
+Link & Actions:
+  - label: Link
+    type: PATHBROWSER
+    value: /content/core-components-examples/library/teaser

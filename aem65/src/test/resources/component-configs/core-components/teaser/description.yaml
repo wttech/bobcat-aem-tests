@@ -1,0 +1,4 @@
+Text:
+  - label: Description
+    type: RICHTEXT
+    value: This is teaser description
