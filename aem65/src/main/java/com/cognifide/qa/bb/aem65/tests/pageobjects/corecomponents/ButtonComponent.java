@@ -10,31 +10,31 @@ import org.openqa.selenium.support.FindBy;
 @PageObject(css = ".cmp-button")
 public class ButtonComponent {
 
-    @Inject
-    @CurrentScope
-    private WebElement component;
+  private static final String ARIA_LABEL = "aria-label";
 
-    @FindBy(css = ".cmp-button__text")
-    private WebElement text;
+  @Inject
+  @CurrentScope
+  private WebElement component;
 
-    @FindBy(css = ".cmp-button__icon")
-    private WebElement icon;
+  @FindBy(css = ".cmp-button__text")
+  private WebElement text;
 
-    private static final String ARIA_LABEL = "aria-label";
+  @FindBy(css = ".cmp-button__icon")
+  private WebElement icon;
 
-    public String getText() {
-        return text.getText();
-    }
+  public String getText() {
+    return text.getText();
+  }
 
-    public String getLink() {
-        return component.getAttribute(HtmlTags.Attributes.HREF);
-    }
+  public String getLink() {
+    return component.getAttribute(HtmlTags.Attributes.HREF);
+  }
 
-    public String getIconClasses() {
-        return icon.getAttribute(HtmlTags.Attributes.CLASS);
-    }
+  public String getIconClasses() {
+    return icon.getAttribute(HtmlTags.Attributes.CLASS);
+  }
 
-    public String getAriaLabel() {
-        return component.getAttribute(ARIA_LABEL);
-    }
+  public String getAriaLabel() {
+    return component.getAttribute(ARIA_LABEL);
+  }
 }
