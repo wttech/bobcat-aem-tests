@@ -1,0 +1,7 @@
+Properties:
+- type: RADIO_GROUP
+  label: Display Mode
+  value: Single Text Element
+- type: SELECT
+  label: Element *
+  value: Answer

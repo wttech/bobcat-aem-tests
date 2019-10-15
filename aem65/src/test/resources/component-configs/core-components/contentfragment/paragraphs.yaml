@@ -1,0 +1,9 @@
+Paragraph Control:
+- type: RADIO_GROUP
+  label: Paragraphs
+  value: Range
+- type: CHECKBOX
+  label: Handle headings as paragraphs
+  value: true
+- type: TEXTFIELD
+  value: 1-3
