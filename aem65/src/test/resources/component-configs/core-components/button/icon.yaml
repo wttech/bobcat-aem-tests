@@ -1,0 +1,7 @@
+Properties:
+  - label: Text
+    type: TEXTFIELD
+    value: Custom button text
+  - label: Icon
+    type: TEXTFIELD
+    value: email
