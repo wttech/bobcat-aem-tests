@@ -1,0 +1,4 @@
+Properties:
+  - label: Automatically transition slides
+    type: CHECKBOX
+    value: true

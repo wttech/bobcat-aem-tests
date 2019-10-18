@@ -1,0 +1,5 @@
+Items:
+  - type: MULTIFIELD_ITEM_WITH_DIALOG_WRAPPER
+    value: Accordion (v1)
+#    - item:
+#          value: Image (v1)
