@@ -1,0 +1,9 @@
+Link & Actions:
+  - label: Link
+    type: PATHBROWSER
+    value: /content/we-retail/language-masters/en/women
+
+Text:
+  - label: Get description from linked page
+    type: CHECKBOX
+    value: true

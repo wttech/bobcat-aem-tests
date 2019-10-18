@@ -22,6 +22,10 @@ import com.cognifide.qa.bb.modules.BobcatRunModule;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 
+/**
+ * These tests verify if Bobcat can handle the configuration of the Image Component
+ * https://opensource.adobe.com/aem-core-wcm-components/library/image.html
+ */
 @Modules(BobcatRunModule.class)
 @Epic("Core Components authoring tests")
 @Feature("Image Component configuration")
@@ -93,7 +97,7 @@ public class ImageComponentTest extends AbstractAemAuthorTest {
             new ResourceFileLocation("component-configs/core-components/image/link.yaml")));
     component = page.getContent(ImageComponent.class, 0);
     assertThat(component.getLink()).as("Check if the link is configured")
-        .endsWith("/content/we-retail/us/en.html");
+        .endsWith("https://cognifide.github.io/bobcat/");
   }
 
   @AfterEach

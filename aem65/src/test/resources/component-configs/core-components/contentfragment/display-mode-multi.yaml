@@ -1,0 +1,16 @@
+Properties:
+- type: RADIO_GROUP
+  label: Display Mode
+  value: Multiple Elements
+- type: MULTIFIELD
+  label: Elements
+  value:
+  - item:
+    - type: SELECT
+      value: Question
+  - item:
+    - type: SELECT
+      value: Answer
+  - item:
+    - type: SELECT
+      value: Tags

@@ -1,0 +1,10 @@
+Properties:
+- type: CONTENT_FRAGMENT_PATHBROWSER
+  label: Content Fragment
+  value: "/content/dam/we-retail/en/experiences/fly-fishing-the-amazon/fly-fishing-the-amazon"
+- type: RADIO_GROUP
+  label: Display Mode
+  value: Single Text Element
+- type: SELECT
+  label: Element *
+  value: Story
