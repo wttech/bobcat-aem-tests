@@ -1,4 +1,4 @@
 Properties:
 - label: Type / Size
   type: SELECT
-  value: H3
+  value: h3

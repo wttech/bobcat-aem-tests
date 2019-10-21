@@ -32,7 +32,7 @@ import io.qameta.allure.Feature;
 @DisplayName("Author can configure for Title Component the...")
 public class TitleComponentTest extends AbstractAemAuthorTest {
 
-  private static final String TEST_PAGE_PATH = "/content/we-retail/us/en/titlecomponenttestpage";
+  private static final String TEST_PAGE_PATH = "/content/core-components-examples/library/title-component-test-page";
 
   private TestPage page;
   private TitleComponent component;
@@ -41,7 +41,7 @@ public class TitleComponentTest extends AbstractAemAuthorTest {
   public void createAndOpenTestPage() throws ActionException {
     controller.execute(AemActions.CREATE_PAGE_VIA_SLING, new SlingPageData(TEST_PAGE_PATH,
         SlingDataXMLBuilder.buildFromFile(
-            "testpages/core-components/title/titleComponentTestPage.xml")));
+            "testpages/core-components/titleComponentTestPage.xml")));
     page = bobcatPageFactory.create("/editor.html" + TEST_PAGE_PATH + ".html", TestPage.class);
     page.open();
   }
@@ -50,7 +50,7 @@ public class TitleComponentTest extends AbstractAemAuthorTest {
   @DisplayName("text")
   public void configureText() throws ActionException {
     controller.execute(AemActions.CONFIGURE_COMPONENT,
-        new ConfigureComponentData("container", "Title", 0,
+        new ConfigureComponentData("container", "Title (v2)", 0,
             new ResourceFileLocation("component-configs/core-components/title/text.yaml")));
     component = page.getContent(TitleComponent.class, 0);
     assertThat(component.getInnerHtml().replaceAll("[\r\n]", ""))
@@ -62,7 +62,7 @@ public class TitleComponentTest extends AbstractAemAuthorTest {
   @DisplayName("heading type")
   public void configureHeadingType() throws ActionException {
     controller.execute(AemActions.CONFIGURE_COMPONENT,
-        new ConfigureComponentData("container", "Title", 0,
+        new ConfigureComponentData("container", "Title (v2)", 0,
             new ResourceFileLocation("component-configs/core-components/title/heading-type.yaml")));
     component = page.getContent(TitleComponent.class, 0);
     assertThat(component.getTextHtmlTag()).as("Check if the heading type is configured")
@@ -73,7 +73,7 @@ public class TitleComponentTest extends AbstractAemAuthorTest {
   @DisplayName("link")
   public void configureLink() throws ActionException {
     controller.execute(AemActions.CONFIGURE_COMPONENT,
-        new ConfigureComponentData("container", "Title", 0,
+        new ConfigureComponentData("container", "Title (v2)", 0,
             new ResourceFileLocation("component-configs/core-components/title/link.yaml")));
     component = page.getContent(TitleComponent.class, 0);
     assertThat(component.getLinkHref()).as("Check if the link is configured")
