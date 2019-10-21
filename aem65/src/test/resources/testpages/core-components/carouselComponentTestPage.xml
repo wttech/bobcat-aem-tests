@@ -19,6 +19,7 @@
         sling:resourceType="wcm/foundation/components/responsivegrid">
         <carousel
           jcr:primaryType="nt:unstructured"
+          autoplay="true"
           sling:resourceType="core/wcm/components/carousel/v1/carousel">
           <item_1571400041435
             jcr:primaryType="nt:unstructured"
@@ -32,6 +33,23 @@
             jcr:primaryType="nt:unstructured"
             sling:resourceType="core/wcm/components/title/v1/title"/>
         </carousel>
+        <carousel_231178053
+          jcr:primaryType="nt:unstructured"
+          autoplay="true"
+          delay="5000"
+          sling:resourceType="core/wcm/components/carousel/v1/carousel">
+          <item_1571400041435
+            jcr:primaryType="nt:unstructured"
+            actionsEnabled="false"
+            descriptionFromPage="false"
+            fileReference="/content/dam/core-components-examples/library/sample-assets/mountain-range.jpg"
+            sling:resourceType="core/wcm/components/teaser/v1/teaser"
+            textIsRich="true"
+            titleFromPage="false"/>
+          <item_1571400048485
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="core/wcm/components/title/v1/title"/>
+        </carousel_231178053>
         <carousel_806608742
           jcr:primaryType="nt:unstructured"
           sling:resourceType="core/wcm/components/carousel/v1/carousel"/>

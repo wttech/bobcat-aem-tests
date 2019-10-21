@@ -1,0 +1,4 @@
+Properties:
+  - label: Disable automatic pause on hover
+    type: CHECKBOX
+    value: true

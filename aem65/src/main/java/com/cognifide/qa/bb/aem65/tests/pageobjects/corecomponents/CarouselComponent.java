@@ -1,5 +1,7 @@
 package com.cognifide.qa.bb.aem65.tests.pageobjects.corecomponents;
 
+import com.cognifide.qa.bb.constants.HtmlTags;
+import com.cognifide.qa.bb.constants.HtmlTags.Attributes;
 import com.cognifide.qa.bb.qualifier.CurrentScope;
 import com.cognifide.qa.bb.qualifier.PageObject;
 import com.google.inject.Inject;
@@ -23,5 +25,18 @@ public class CarouselComponent {
 
     public boolean isAutoplayActive() {
       return autoplay.isDisplayed();
+    }
+
+
+    public String getCarouselAutoplayTransitionDelay() {
+        return component.getAttribute("data-cmp-delay");
+    }
+
+    public String isCarouselAutopauseDisabled() {
+      return component.getAttribute("data-cmp-autopause-disabled");
+    }
+
+    public String getCarouselAccessibilityLabel() {
+      return component.getAttribute("aria-label");
     }
 }
