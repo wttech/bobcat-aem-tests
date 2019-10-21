@@ -1,4 +1,4 @@
 List Settings:
 - label: Max Items
-  type: TEXTFIELD
+  type: NUMBER_INPUT
   value: 2
