@@ -32,7 +32,7 @@ import io.qameta.allure.Feature;
 @DisplayName("Author can configure for Image Component the...")
 public class ImageComponentTest extends AbstractAemAuthorTest {
 
-  private static final String TEST_PAGE_PATH = "/content/we-retail/us/en/image-component-test-page";
+  private static final String TEST_PAGE_PATH = "/content/core-components-examples/library/image-component-test-page";
 
   private TestPage page;
   private ImageComponent component;
@@ -49,9 +49,9 @@ public class ImageComponentTest extends AbstractAemAuthorTest {
   @DisplayName("asset")
   public void configureAsset() throws ActionException {
     controller.execute(AemActions.CONFIGURE_COMPONENT,
-        new ConfigureComponentData("container", "Image", 1,
+        new ConfigureComponentData("container", "Image (v2)", 1,
             new ResourceFileLocation("component-configs/core-components/image/asset.yaml")));
-    component = page.getContent(ImageComponent.class, 1);
+    component = page.getContent(ImageComponent.class, 3);
     assertThat(component.getSrc()).as("Check if the img src is configured")
         .matches(String.format(".*%s.*majestic-rainbow.jpeg", TEST_PAGE_PATH));
   }
@@ -60,9 +60,9 @@ public class ImageComponentTest extends AbstractAemAuthorTest {
   @DisplayName("decorative image metadata")
   public void configureDecorativeImage() throws ActionException {
     controller.execute(AemActions.CONFIGURE_COMPONENT,
-        new ConfigureComponentData("container", "Image", 0, new ResourceFileLocation(
+        new ConfigureComponentData("container", "Image (v2)", 0, new ResourceFileLocation(
             "component-configs/core-components/image/decorative-image.yaml")));
-    component = page.getContent(ImageComponent.class, 0);
+    component = page.getContent(ImageComponent.class, 2);
     assertThat(component.getAlt()).as("Check if the alt attribute is empty").isEmpty();
   }
 
@@ -70,21 +70,20 @@ public class ImageComponentTest extends AbstractAemAuthorTest {
   @DisplayName("alternative text metadata")
   public void configureAlternativeText() throws ActionException {
     controller.execute(AemActions.CONFIGURE_COMPONENT,
-        new ConfigureComponentData("container", "Image", 0, new ResourceFileLocation(
+        new ConfigureComponentData("container", "Image (v2)", 0, new ResourceFileLocation(
             "component-configs/core-components/image/alt-text.yaml")));
-    component = page.getContent(ImageComponent.class, 0);
+    component = page.getContent(ImageComponent.class, 2);
     assertThat(component.getAlt()).as("Check if the alt text is configured")
         .matches("Custom alt text");
-
   }
 
   @Test
   @DisplayName("caption metadata")
   public void configureCaption() throws ActionException {
     controller.execute(AemActions.CONFIGURE_COMPONENT,
-        new ConfigureComponentData("container", "Image", 0,
+        new ConfigureComponentData("container", "Image (v2)", 0,
             new ResourceFileLocation("component-configs/core-components/image/caption.yaml")));
-    component = page.getContent(ImageComponent.class, 0);
+    component = page.getContent(ImageComponent.class, 2);
     assertThat(component.getCaption()).as("Check if the caption text is configured")
         .matches("Custom caption");
   }
@@ -93,9 +92,9 @@ public class ImageComponentTest extends AbstractAemAuthorTest {
   @DisplayName("link metadata")
   public void configureLink() throws ActionException {
     controller.execute(AemActions.CONFIGURE_COMPONENT,
-        new ConfigureComponentData("container", "Image", 0,
+        new ConfigureComponentData("container", "Image (v2)", 0,
             new ResourceFileLocation("component-configs/core-components/image/link.yaml")));
-    component = page.getContent(ImageComponent.class, 0);
+    component = page.getContent(ImageComponent.class, 2);
     assertThat(component.getLink()).as("Check if the link is configured")
         .endsWith("https://cognifide.github.io/bobcat/");
   }
