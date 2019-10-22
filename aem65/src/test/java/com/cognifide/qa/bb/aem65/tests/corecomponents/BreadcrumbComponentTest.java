@@ -54,55 +54,21 @@ public class BreadcrumbComponentTest extends AbstractAemAuthorTest {
     public void decreaseNavigationStartLevel() throws ActionException {
         controller.execute(AemActions.CONFIGURE_COMPONENT,
                 new ConfigureComponentData("container", "Breadcrumb (v2)", 0,
-                        new ResourceFileLocation(
-                                "component-configs/core-components/breadcrumb/min-navigation-start-level.yaml")));
+                        new ResourceFileLocation("component-configs/core-components/breadcrumb/navigation-start-level.yaml")));
         component = testPage.getContent(BreadcrumbComponent.class, 0);
-        assertThat(component.getText()).as("Check if the root name is present")
+        assertThat(component.getText()).as("Check if breadcrumb value contains first level page")
                 .contains("Core Components");
     }
 
     @Test
-    @DisplayName("navigation start level - increase default value")
-    public void increaseNavigationStartLevel() throws ActionException {
+    @DisplayName("checkbox values change to true")
+    public void changeCheckboxesToTrue() throws ActionException {
         controller.execute(AemActions.CONFIGURE_COMPONENT,
                 new ConfigureComponentData("container", "Breadcrumb (v2)", 0,
-                        new ResourceFileLocation("component-configs/core-components/breadcrumb/max-navigation-start-level.yaml")));
+                        new ResourceFileLocation("component-configs/core-components/breadcrumb/checkbox-configuration.yaml")));
         component = testPage.getContent(BreadcrumbComponent.class, 0);
-        assertThat(component.getText()).as("Check if breadcrumb value is equal to page title")
-                .doesNotContain("breadcrumbHiddenTestPage");
-    }
-
-    @Test
-    @DisplayName("show hidden navigation items checkbox")
-    public void showHiddenNavigationItems() throws ActionException {
-        controller.execute(AemActions.CONFIGURE_COMPONENT,
-                new ConfigureComponentData("container", "Breadcrumb (v2)", 0,
-                        new ResourceFileLocation("component-configs/core-components/breadcrumb/hidden-navigation-item-true.yaml")));
-        component = testPage.getContent(BreadcrumbComponent.class, 0);
-        assertThat(component.getText()).as("Check if hidden page is visible in breadcrumb")
-                .contains("breadcrumbHiddenTestPage");
-    }
-
-    @Test
-    @DisplayName("hide current page checkbox")
-    public void hideCurrentPage() throws ActionException {
-        controller.execute(AemActions.CONFIGURE_COMPONENT,
-                new ConfigureComponentData("container", "Breadcrumb (v2)", 0,
-                        new ResourceFileLocation("component-configs/core-components/breadcrumb/hide-current-page-true.yaml")));
-        component = testPage.getContent(BreadcrumbComponent.class, 0);
-        assertThat(component.getText()).as("Check if title of current page is not visible in breadcrumb")
+        assertThat(component.getText()).as("Check if current page is not present in breadcrumb")
                 .doesNotContain("breadcrumbTestPage");
-    }
-
-    @Test
-    @DisplayName("check combination of all properties")
-    public void modifeAllProperties() throws ActionException {
-        controller.execute(AemActions.CONFIGURE_COMPONENT,
-                new ConfigureComponentData("container", "Breadcrumb (v2)", 0,
-                        new ResourceFileLocation("component-configs/core-components/breadcrumb/modify-all-properties.yaml")));
-        component = testPage.getContent(BreadcrumbComponent.class, 0);
-        assertThat(component.getText()).as("Check if combination of all properties does not break anything")
-                .doesNotContain("breadcrumbTestPage").contains("Core Components");
     }
 
     @AfterEach
