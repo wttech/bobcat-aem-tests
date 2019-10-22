@@ -1,20 +1,16 @@
 package com.cognifide.qa.bb.aem65.tests.pageobjects.corecomponents;
 
-import com.cognifide.qa.bb.constants.HtmlTags;
-import com.cognifide.qa.bb.qualifier.CurrentScope;
-import com.cognifide.qa.bb.qualifier.PageObject;
-import com.google.inject.Inject;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import java.util.List;
+import com.cognifide.qa.bb.constants.HtmlTags;
+import com.cognifide.qa.bb.qualifier.PageObject;
 
 @PageObject(css = ".cmp-teaser")
 public class TeaserComponent {
-
-  @Inject
-  @CurrentScope
-  private WebElement component;
 
   @FindBy(css = ".cmp-image__image")
   private WebElement image;
@@ -33,6 +29,9 @@ public class TeaserComponent {
 
   @FindBy(css = ".cmp-teaser__description")
   private WebElement isDescriptionVisible;
+
+  @FindBy(css = ".cmp-teaser__action-link")
+  private List<WebElement> actionLinks;
 
   public boolean isTeaserDescriptionEmpty() {
     return elements.isEmpty();
@@ -60,5 +59,10 @@ public class TeaserComponent {
 
   public String getTeaserDescription() {
     return description.getText();
+  }
+
+  public List<String> getActionLinkTexts() {
+    return actionLinks.stream().map(WebElement::getText)
+        .collect(Collectors.toList());
   }
 }

@@ -1,5 +1,12 @@
 package com.cognifide.qa.bb.aem65.tests.corecomponents;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+
 import com.cognifide.qa.bb.aem.core.api.AemActions;
 import com.cognifide.qa.bb.aem.core.component.actions.ConfigureComponentData;
 import com.cognifide.qa.bb.aem.core.component.configuration.ResourceFileLocation;
@@ -11,14 +18,9 @@ import com.cognifide.qa.bb.aem65.tests.pages.TestPage;
 import com.cognifide.qa.bb.api.actions.ActionException;
 import com.cognifide.qa.bb.junit5.guice.Modules;
 import com.cognifide.qa.bb.modules.BobcatRunModule;
+
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * These tests verify if Bobcat can handle the configuration of the Teaser Component
@@ -132,6 +134,18 @@ public class TeaserComponentTest extends AbstractAemAuthorTest {
     assertThat(component.getTeaserDescriptionFromLinkedPage())
         .as("Check if the description is taken from linked page")
         .matches("Test description from Properties");
+  }
+
+  @Test
+  @DisplayName("Call-To-Actions")
+  public void configureCallToActions() throws ActionException {
+    controller.execute(AemActions.CONFIGURE_COMPONENT,
+        new ConfigureComponentData("container", "Teaser (v1)", 0,
+            new ResourceFileLocation(
+                "component-configs/core-components/teaser/callToActions.yaml")));
+    component = page.getContent(TeaserComponent.class, 0);
+    assertThat(component.getActionLinkTexts()).as("Check if CTAs are configured properly")
+        .containsSequence("English", "Switzerland");
   }
 
   @AfterEach
