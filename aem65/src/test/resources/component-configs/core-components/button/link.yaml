@@ -1,0 +1,7 @@
+Properties:
+  - label: Text
+    type: TEXTFIELD
+    value: Custom link button text
+  - label: Link
+    type: PATHBROWSER
+    value: /content/we-retail/us/en

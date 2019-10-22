@@ -1,0 +1,4 @@
+Properties:
+- type: SELECT
+  label: Variation
+  value: Teaser

@@ -1,0 +1,13 @@
+Link & Actions:
+- type: CHECKBOX
+  label: Enable Call-To-Actions
+  value: true
+- type: MULTIFIELD
+  clear: false
+  value:
+  - item:
+    - type: PATHBROWSER
+      value: /content/we-retail/us/en
+  - item:
+    - type: PATHBROWSER
+      value: /content/we-retail/ch

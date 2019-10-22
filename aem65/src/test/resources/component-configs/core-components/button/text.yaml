@@ -1,0 +1,4 @@
+Properties:
+  - label: Text
+    type: TEXTFIELD
+    value: Custom button text

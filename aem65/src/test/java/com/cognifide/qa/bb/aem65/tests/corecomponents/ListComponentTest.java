@@ -32,7 +32,7 @@ import io.qameta.allure.Feature;
 @DisplayName("Author can configure for the List Component the...")
 public class ListComponentTest extends AbstractAemAuthorTest {
 
-  private static final String COMPONENT_PAGE_PATH = "/content/we-retail/us/en/list-component-test-page";
+  private static final String COMPONENT_PAGE_PATH = "/content/core-components-examples/library/list-component-test-page";
   private static final String LIST_ITEM_ROOT_PATH = "/content/we-retail/us/en/list-item-root";
   private static final String[] LIST_ITEM_PATHS = {
       "/content/we-retail/us/en/list-item-root/list-item-one",
@@ -66,7 +66,7 @@ public class ListComponentTest extends AbstractAemAuthorTest {
   @DisplayName("creation of list with static items")
   public void configureToUseStaticItems() throws ActionException {
     controller.execute(AemActions.CONFIGURE_COMPONENT,
-        new ConfigureComponentData("container", "List", 0,
+        new ConfigureComponentData("container", "List (v2)", 0,
             new ResourceFileLocation("component-configs/core-components/list/fixed-items.yaml")));
     component = page.getContent(ListComponent.class, 0);
     assertThat(component.getText()).as("Check if the list items are filtered correctly")
@@ -79,7 +79,7 @@ public class ListComponentTest extends AbstractAemAuthorTest {
   @DisplayName("creation of list with search")
   public void configureToUseSearch() throws ActionException {
     controller.execute(AemActions.CONFIGURE_COMPONENT,
-        new ConfigureComponentData("container", "List", 0,
+        new ConfigureComponentData("container", "List (v2)", 0,
             new ResourceFileLocation("component-configs/core-components/list/search-items.yaml")));
     component = page.getContent(ListComponent.class, 0);
     assertThat(component.getText()).as("Check if the list items are filtered correctly")
@@ -90,7 +90,7 @@ public class ListComponentTest extends AbstractAemAuthorTest {
   @DisplayName("creation of list with tags ")
   public void configureToUseTags() throws ActionException {
     controller.execute(AemActions.CONFIGURE_COMPONENT,
-        new ConfigureComponentData("container", "List", 0,
+        new ConfigureComponentData("container", "List (v2)", 0,
             new ResourceFileLocation("component-configs/core-components/list/tagged-items.yaml")));
     component = page.getContent(ListComponent.class, 0);
     assertThat(component.getText()).as("Check if the list items are filtered correctly")
@@ -102,7 +102,7 @@ public class ListComponentTest extends AbstractAemAuthorTest {
   @DisplayName("creation of list with children")
   public void configureToUseChildren() throws ActionException {
     controller.execute(AemActions.CONFIGURE_COMPONENT,
-        new ConfigureComponentData("container", "List", 0,
+        new ConfigureComponentData("container", "List (v2)", 0,
             new ResourceFileLocation("component-configs/core-components/list/child-items.yaml")));
     component = page.getContent(ListComponent.class, 0);
     assertThat(component.getText()).as("Check if the list items are filtered correctly")
@@ -116,7 +116,7 @@ public class ListComponentTest extends AbstractAemAuthorTest {
   @DisplayName("ordering and sorting schema")
   public void configureOrderingAndSortingSchema() throws ActionException {
     controller.execute(AemActions.CONFIGURE_COMPONENT,
-        new ConfigureComponentData("container", "List", 0, new ResourceFileLocation(
+        new ConfigureComponentData("container", "List (v2)", 0, new ResourceFileLocation(
             "component-configs/core-components/list/sort-and-order.yaml")));
     component = page.getContent(ListComponent.class, 0);
     assertThat(component.getText()).as("Check if the list items are ordered correctly")
@@ -130,7 +130,7 @@ public class ListComponentTest extends AbstractAemAuthorTest {
   @DisplayName("max items number")
   public void configureMaxItemsNumber() throws ActionException {
     controller.execute(AemActions.CONFIGURE_COMPONENT,
-        new ConfigureComponentData("container", "List", 0, new ResourceFileLocation(
+        new ConfigureComponentData("container", "List (v2)", 0, new ResourceFileLocation(
             "component-configs/core-components/list/max-items.yaml")));
     component = page.getContent(ListComponent.class, 0);
     assertThat(component.getText()).as("Check if the list items is limited to two items")
@@ -142,7 +142,7 @@ public class ListComponentTest extends AbstractAemAuthorTest {
   @DisplayName("item settings")
   public void configureItemSettings() throws ActionException {
     controller.execute(AemActions.CONFIGURE_COMPONENT,
-        new ConfigureComponentData("container", "List", 0, new ResourceFileLocation(
+        new ConfigureComponentData("container", "List (v2)", 0, new ResourceFileLocation(
             "component-configs/core-components/list/item-settings.yaml")));
     component = page.getContent(ListComponent.class, 0);
     for (int i = 0; i < LIST_ITEM_PATHS.length; i++) {

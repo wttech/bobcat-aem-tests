@@ -4,10 +4,10 @@
   <jcr:content
     cq:template="/conf/core-components-examples/settings/wcm/templates/content-page"
     jcr:primaryType="cq:PageContent"
-    jcr:title="List Component Test Page"
+    jcr:title="Title Component Test Page"
     sling:resourceType="core-components-examples/components/page"
-    navTitle="List Component Test Page"
-    pageTitle="List Component Test Page">
+    navTitle="Title Component Test Page"
+    pageTitle="Title Component Test Page">
     <root
       jcr:primaryType="nt:unstructured"
       sling:resourceType="wcm/foundation/components/responsivegrid">
@@ -15,17 +15,9 @@
         cq:styleIds="[1545309110033]"
         jcr:primaryType="nt:unstructured"
         sling:resourceType="wcm/foundation/components/responsivegrid">
-        <list
+        <title
           jcr:primaryType="nt:unstructured"
-          sling:resourceType="core/wcm/components/list/v2/list"
-          childDepth="3"
-          linkItems="false"
-          listFrom="children"
-          parentPage="/content/we-retail/us/en/list-item-root"
-          showDescription="false"
-          showModificationDate="false"
-          sortOrder="asc"
-          tagsMatch="any"/>
+          sling:resourceType="core/wcm/components/title/v2/title"/>
       </responsivegrid>
     </root>
   </jcr:content>
