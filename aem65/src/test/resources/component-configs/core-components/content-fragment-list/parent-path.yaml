@@ -1,0 +1,4 @@
+Properties:
+- label: Parent Path
+  type: PATHBROWSER
+  value: /content/dam/we-retail/en/faqs/orders
