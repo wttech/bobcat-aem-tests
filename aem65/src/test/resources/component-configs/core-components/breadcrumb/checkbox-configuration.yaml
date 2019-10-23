@@ -1,0 +1,7 @@
+Properties:
+- label: Show hidden navigation items
+  type: CHECKBOX
+  value: true
+- label: Hide current page
+  type: CHECKBOX
+  value: true
