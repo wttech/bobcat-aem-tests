@@ -68,7 +68,7 @@ public class BreadcrumbComponentTest extends AbstractAemAuthorTest {
                         new ResourceFileLocation("component-configs/core-components/breadcrumb/checkbox-configuration.yaml")));
         component = testPage.getContent(BreadcrumbComponent.class, 0);
         assertThat(component.getText()).as("Check if current page is not present in breadcrumb")
-                .doesNotContain("breadcrumbTestPage");
+                .doesNotContain("breadcrumbTestPage").contains("breadcrumbHiddenTestPage");
     }
 
     @AfterEach
