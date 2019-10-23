@@ -1,0 +1,4 @@
+Properties:
+- label: Active Item
+  type: SELECT
+  value: "Layout Container: Tab 2"
