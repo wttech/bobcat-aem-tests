@@ -1,0 +1,16 @@
+Properties:
+- label: Action Type
+  type: SELECT
+  value: Store Content
+- label: Content Path *
+  type: TEXTFIELD
+  value: /content/usergenerated/core-components-examples/library/storagedestination
+- label: Start Workflow
+  type: SELECT
+  value: Download Asset
+- label: Workflow Title *
+  type: TEXTFIELD
+  value: The workflow title
+- label: Thank You Page
+  type: PATHBROWSER
+  value: /content/core-components-examples/library/button
