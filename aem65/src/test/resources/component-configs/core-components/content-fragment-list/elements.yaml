@@ -1,0 +1,7 @@
+Elements:
+- label: Elements
+  type: MULTIFIELD
+  value:
+  - item:
+    - type: SELECT
+      value: Question

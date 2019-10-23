@@ -1,0 +1,4 @@
+Properties:
+- label: Max Items
+  type: NUMBER_INPUT
+  value: 1
