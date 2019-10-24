@@ -60,7 +60,7 @@ public class FormContainerComponentTest extends AbstractAemAuthorTest {
     controller.execute(AemActions.CONFIGURE_COMPONENT,
         new ConfigureComponentData("container", "Form Container (v2)", 0,
             new ResourceFileLocation(
-                "component-configs/core-components/form-container/mail.yaml")));
+                "component-configs/core-components/form-components/form-container/mail.yaml")));
     component = page.getContent(FormContainerComponent.class, 0);
     softly = new SoftAssertions();
     softly.assertThat(component.isDisplayed()).as("Check if the form is displayed").isTrue();
@@ -76,7 +76,7 @@ public class FormContainerComponentTest extends AbstractAemAuthorTest {
     controller.execute(AemActions.CONFIGURE_COMPONENT,
         new ConfigureComponentData("container", "Form Container (v2)", 0,
             new ResourceFileLocation(
-                "component-configs/core-components/form-container/store-content.yaml")));
+                "component-configs/core-components/form-components/form-container/store-content.yaml")));
     component = page.getContent(FormContainerComponent.class, 0);
     softly = new SoftAssertions();
     softly.assertThat(component.isDisplayed()).as("Check if the form is displayed").isTrue();

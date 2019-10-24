@@ -1,0 +1,10 @@
+Properties:
+- label: Name *
+  type: TEXTFIELD
+  value: The name
+- label: Value
+  type: TEXTFIELD
+  value: The value
+- label: Identifier
+  type: TEXTFIELD
+  value: The identifier
