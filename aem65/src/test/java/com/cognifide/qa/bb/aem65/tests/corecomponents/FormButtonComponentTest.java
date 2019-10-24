@@ -12,7 +12,7 @@ import com.cognifide.qa.bb.aem.core.component.configuration.ResourceFileLocation
 import com.cognifide.qa.bb.aem.core.pages.sling.SlingDataXMLBuilder;
 import com.cognifide.qa.bb.aem.core.pages.sling.SlingPageData;
 import com.cognifide.qa.bb.aem65.tests.AbstractAemAuthorTest;
-import com.cognifide.qa.bb.aem65.tests.pageobjects.corecomponents.FormHiddenComponent;
+import com.cognifide.qa.bb.aem65.tests.pageobjects.corecomponents.FormButtonComponent;
 import com.cognifide.qa.bb.aem65.tests.pages.TestPage;
 import com.cognifide.qa.bb.api.actions.ActionException;
 import com.cognifide.qa.bb.junit5.guice.Modules;
@@ -22,20 +22,20 @@ import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 
 /**
- * These tests verify if Bobcat can handle the configuration of the Form Hidden Component
- * https://docs.adobe.com/content/help/en/experience-manager-core-components/using/components/forms/form-hidden.html
+ * These tests verify if Bobcat can handle the configuration of the Form Button Component
+ * https://docs.adobe.com/content/help/en/experience-manager-core-components/using/components/forms/form-button.html
  */
 @Modules(BobcatRunModule.class)
 @Epic("Core Components authoring tests")
-@Feature("Form Hidden Component configuration")
-@DisplayName("Author can configure for Form Hidden Component the...")
-public class FormHiddenComponentTest extends AbstractAemAuthorTest {
+@Feature("Form Button Component configuration")
+@DisplayName("Author can configure for Form Button Component the...")
+public class FormButtonComponentTest extends AbstractAemAuthorTest {
 
   private static final String TEST_PAGE_PATH =
       "/content/core-components-examples/library/form-components-test-page";
 
   private TestPage page;
-  private FormHiddenComponent component;
+  private FormButtonComponent component;
   private SoftAssertions softly;
 
   @BeforeEach
@@ -51,14 +51,17 @@ public class FormHiddenComponentTest extends AbstractAemAuthorTest {
   @DisplayName("all properties")
   public void configureAllProperties() throws ActionException {
     controller.execute(AemActions.CONFIGURE_COMPONENT,
-        new ConfigureComponentData("Layout Container/Form Container (v2)", "Form Hidden (v2)", 0,
+        new ConfigureComponentData("Layout Container/Form Container (v2)", "Form Button (v2)", 0,
             new ResourceFileLocation(
-                "component-configs/core-components/form-components/form-hidden.yaml")));
-    component = page.getContent(FormHiddenComponent.class, 0);
+                "component-configs/core-components/form-components/form-button.yaml")));
+    component = page.getContent(FormButtonComponent.class, 0);
     softly = new SoftAssertions();
-    softly.assertThat(component.getId())
-        .as("Check if the id is correct")
-        .isEqualTo("The identifier");
+    softly.assertThat(component.getTitle())
+        .as("Check if the title is correct")
+        .isEqualTo("The title");
+    softly.assertThat(component.getType())
+        .as("Check if the type is correct")
+        .isEqualTo("submit");
     softly.assertThat(component.getName())
         .as("Check if the name is correct")
         .isEqualTo("The name");
