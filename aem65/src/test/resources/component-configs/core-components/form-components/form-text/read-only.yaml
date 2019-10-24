@@ -1,0 +1,4 @@
+Constraints:
+- label: Make read only
+  type: CHECKBOX
+  value: true

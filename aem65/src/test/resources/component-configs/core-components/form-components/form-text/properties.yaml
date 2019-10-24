@@ -1,0 +1,19 @@
+Properties:
+- label: Constraint
+  type: SELECT
+  value: Email
+- label: Text Lines
+  type: NUMBER_INPUT
+  value: 3
+- label: Label *
+  type: TEXTFIELD
+  value: The label
+- label: Hide the label from being displayed
+  type: CHECKBOX
+  value: true
+- label: Element Name *
+  type: TEXTFIELD
+  value: The element name
+- label: Value
+  type: TEXTFIELD
+  value: The value
