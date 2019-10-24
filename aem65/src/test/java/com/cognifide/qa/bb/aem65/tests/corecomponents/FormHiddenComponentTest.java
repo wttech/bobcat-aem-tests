@@ -12,7 +12,7 @@ import com.cognifide.qa.bb.aem.core.component.configuration.ResourceFileLocation
 import com.cognifide.qa.bb.aem.core.pages.sling.SlingDataXMLBuilder;
 import com.cognifide.qa.bb.aem.core.pages.sling.SlingPageData;
 import com.cognifide.qa.bb.aem65.tests.AbstractAemAuthorTest;
-import com.cognifide.qa.bb.aem65.tests.pageobjects.corecomponents.FormHiddenComponent;
+import com.cognifide.qa.bb.aem65.tests.pageobjects.corecomponents.formcomponents.FormHiddenComponent;
 import com.cognifide.qa.bb.aem65.tests.pages.TestPage;
 import com.cognifide.qa.bb.api.actions.ActionException;
 import com.cognifide.qa.bb.junit5.guice.Modules;

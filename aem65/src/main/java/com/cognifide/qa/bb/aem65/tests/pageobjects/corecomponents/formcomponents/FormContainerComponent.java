@@ -1,4 +1,4 @@
-package com.cognifide.qa.bb.aem65.tests.pageobjects.corecomponents;
+package com.cognifide.qa.bb.aem65.tests.pageobjects.corecomponents.formcomponents;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;

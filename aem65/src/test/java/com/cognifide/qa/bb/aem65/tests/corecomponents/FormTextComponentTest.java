@@ -14,7 +14,7 @@ import com.cognifide.qa.bb.aem.core.component.configuration.ResourceFileLocation
 import com.cognifide.qa.bb.aem.core.pages.sling.SlingDataXMLBuilder;
 import com.cognifide.qa.bb.aem.core.pages.sling.SlingPageData;
 import com.cognifide.qa.bb.aem65.tests.AbstractAemAuthorTest;
-import com.cognifide.qa.bb.aem65.tests.pageobjects.corecomponents.FormTextComponent;
+import com.cognifide.qa.bb.aem65.tests.pageobjects.corecomponents.formcomponents.FormTextComponent;
 import com.cognifide.qa.bb.aem65.tests.pages.TestPage;
 import com.cognifide.qa.bb.api.actions.ActionException;
 import com.cognifide.qa.bb.junit5.guice.Modules;
@@ -31,7 +31,7 @@ import io.qameta.allure.Feature;
 @Modules(BobcatRunModule.class)
 @Epic("Core Components authoring tests")
 @Feature("Form Text Component configuration")
-@DisplayName("Author can configure for Form Button Component the...")
+@DisplayName("Author can configure for Form Text Component the...")
 public class FormTextComponentTest extends AbstractAemAuthorTest {
 
   private static final String TEST_PAGE_PATH =

@@ -1,0 +1,49 @@
+Properties:
+- label: Type
+  type: SELECT
+  value: Checkboxes
+- label: Source
+  type: SELECT
+  value: Local
+- label: Options
+  type: MULTIFIELD
+  value:
+  - item:
+    - label: Text
+      type: TEXTFIELD
+      value: Text 1
+    - label: Value
+      type: TEXTFIELD
+      value: Value 1
+    - label: Selected
+      type: CHECKBOX
+      value: true
+    - label: Disabled
+      type: CHECKBOX
+      value: false
+  - item:
+    - label: Text
+      type: TEXTFIELD
+      value: Text 2
+    - label: Value
+      type: TEXTFIELD
+      value: Value 2
+    - label: Selected
+      type: CHECKBOX
+      value: false
+    - label: Disabled
+      type: CHECKBOX
+      value: true
+  - item:
+    - label: Text
+      type: TEXTFIELD
+      value: Text 3
+    - label: Value
+      type: TEXTFIELD
+      value: Value 3
+    - label: Selected
+      type: CHECKBOX
+      value: false
+    - label: Disabled
+      type: CHECKBOX
+      value: false
