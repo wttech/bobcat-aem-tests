@@ -17,6 +17,7 @@ import com.cognifide.qa.bb.aem65.tests.pages.TestPage;
 import com.cognifide.qa.bb.api.actions.ActionException;
 import com.cognifide.qa.bb.junit5.guice.Modules;
 import com.cognifide.qa.bb.modules.BobcatRunModule;
+import com.google.inject.Inject;
 
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
@@ -43,6 +44,8 @@ public class FormContainerComponentTest extends AbstractAemAuthorTest {
 
   private TestPage page;
   private FormContainerComponent component;
+
+  @Inject
   private SoftAssertions softly;
 
   @BeforeEach
@@ -62,7 +65,6 @@ public class FormContainerComponentTest extends AbstractAemAuthorTest {
             new ResourceFileLocation(
                 "component-configs/core-components/form-components/form-container/mail.yaml")));
     component = page.getContent(FormContainerComponent.class, 0);
-    softly = new SoftAssertions();
     softly.assertThat(component.isDisplayed()).as("Check if the form is displayed").isTrue();
     softly.assertThat(component.getThankYouPagePath())
         .as("Check if the \"Thank You\" page path is configured properly")
@@ -78,7 +80,6 @@ public class FormContainerComponentTest extends AbstractAemAuthorTest {
             new ResourceFileLocation(
                 "component-configs/core-components/form-components/form-container/store-content.yaml")));
     component = page.getContent(FormContainerComponent.class, 0);
-    softly = new SoftAssertions();
     softly.assertThat(component.isDisplayed()).as("Check if the form is displayed").isTrue();
     softly.assertThat(component.getThankYouPagePath())
         .as("Check if the \"Thank You\" page path is configured properly")

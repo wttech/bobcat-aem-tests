@@ -19,6 +19,7 @@ import com.cognifide.qa.bb.aem65.tests.pages.TestPage;
 import com.cognifide.qa.bb.api.actions.ActionException;
 import com.cognifide.qa.bb.junit5.guice.Modules;
 import com.cognifide.qa.bb.modules.BobcatRunModule;
+import com.google.inject.Inject;
 
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
@@ -34,6 +35,9 @@ public class ContentFragmentListComponentTest extends AbstractAemAuthorTest {
 
   private TestPage page;
   private ContentFragmentListComponent component;
+
+  @Inject
+  private SoftAssertions softly;
 
   @BeforeEach
   public void setup() throws ActionException {
@@ -64,7 +68,6 @@ public class ContentFragmentListComponentTest extends AbstractAemAuthorTest {
             new ResourceFileLocation(
                 "component-configs/core-components/content-fragment-list/parent-path.yaml")));
     component = page.getContent(ContentFragmentListComponent.class, 1);
-    SoftAssertions softly = new SoftAssertions();
     softly.assertThat(component.getArticleTexts().get(0))
         .as("Check if the first article from the parent path is displayed")
         .matches("^Accepted Currency(.*|\\n)*processing$");
@@ -95,7 +98,6 @@ public class ContentFragmentListComponentTest extends AbstractAemAuthorTest {
             new ResourceFileLocation(
                 "component-configs/core-components/content-fragment-list/elements.yaml")));
     component = page.getContent(ContentFragmentListComponent.class, 1);
-    SoftAssertions softly = new SoftAssertions();
     softly.assertThat(component.getArticleTexts().get(0))
         .as("Check if the element selection is configured properly for the first article")
         .matches("^The Company Name(.*|\\n)*\"We.Retail\"\\?");

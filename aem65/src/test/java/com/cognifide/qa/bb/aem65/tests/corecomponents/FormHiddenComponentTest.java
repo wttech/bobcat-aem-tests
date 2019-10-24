@@ -17,6 +17,7 @@ import com.cognifide.qa.bb.aem65.tests.pages.TestPage;
 import com.cognifide.qa.bb.api.actions.ActionException;
 import com.cognifide.qa.bb.junit5.guice.Modules;
 import com.cognifide.qa.bb.modules.BobcatRunModule;
+import com.google.inject.Inject;
 
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
@@ -36,6 +37,8 @@ public class FormHiddenComponentTest extends AbstractAemAuthorTest {
 
   private TestPage page;
   private FormHiddenComponent component;
+
+  @Inject
   private SoftAssertions softly;
 
   @BeforeEach
@@ -55,7 +58,6 @@ public class FormHiddenComponentTest extends AbstractAemAuthorTest {
             new ResourceFileLocation(
                 "component-configs/core-components/form-components/form-hidden.yaml")));
     component = page.getContent(FormHiddenComponent.class, 0);
-    softly = new SoftAssertions();
     softly.assertThat(component.getId())
         .as("Check if the id is correct")
         .isEqualTo("The identifier");

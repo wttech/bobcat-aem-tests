@@ -17,6 +17,7 @@ import com.cognifide.qa.bb.aem65.tests.pages.TestPage;
 import com.cognifide.qa.bb.api.actions.ActionException;
 import com.cognifide.qa.bb.junit5.guice.Modules;
 import com.cognifide.qa.bb.modules.BobcatRunModule;
+import com.google.inject.Inject;
 
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
@@ -36,6 +37,8 @@ public class FormButtonComponentTest extends AbstractAemAuthorTest {
 
   private TestPage page;
   private FormButtonComponent component;
+
+  @Inject
   private SoftAssertions softly;
 
   @BeforeEach
@@ -55,7 +58,6 @@ public class FormButtonComponentTest extends AbstractAemAuthorTest {
             new ResourceFileLocation(
                 "component-configs/core-components/form-components/form-button.yaml")));
     component = page.getContent(FormButtonComponent.class, 0);
-    softly = new SoftAssertions();
     softly.assertThat(component.getTitle())
         .as("Check if the title is correct")
         .isEqualTo("The title");
