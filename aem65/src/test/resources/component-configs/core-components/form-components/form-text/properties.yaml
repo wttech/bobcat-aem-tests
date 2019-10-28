@@ -8,12 +8,12 @@ Properties:
 - label: Label *
   type: TEXTFIELD
   value: The label
-- label: Hide the label from being displayed
-  type: CHECKBOX
-  value: true
 - label: Element Name *
   type: TEXTFIELD
   value: The element name
 - label: Value
   type: TEXTFIELD
   value: The value
+- label: Hide the label from being displayed
+  type: CHECKBOX
+  value: true
