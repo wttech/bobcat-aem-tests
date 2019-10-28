@@ -1,4 +1,4 @@
 Properties:
 - label: Navigation Start Level
-  type: TEXTFIELD
+  type: NUMBER_INPUT
   value: 1
