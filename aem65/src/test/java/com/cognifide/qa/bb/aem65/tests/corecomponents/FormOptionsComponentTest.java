@@ -87,7 +87,6 @@ public class FormOptionsComponentTest extends AbstractAemAuthorTest {
     softly.assertThat(component.getFieldValues())
         .as("Check if the field values are correct")
         .containsExactly("Value 1", "Value 2", "Value 3");
-//    TODO: These two tests below keep failing because BB keeps selecting/deselecting checkboxes for the first multifield item instead of editing different multifield item checkboxes
     softly.assertThat(component.isFieldSelected(0))
         .as("Check if the first field is selected")
         .isTrue();
