@@ -70,10 +70,10 @@ public class ContentFragmentListComponentTest extends AbstractAemAuthorTest {
     component = page.getContent(ContentFragmentListComponent.class, 1);
     softly.assertThat(component.getArticleTexts().get(0))
         .as("Check if the first article from the parent path is displayed")
-        .matches("^Accepted Currency(.*|\\n)*processing$");
+        .matches("^Cancellations(.*|\\n)*processing$");
     softly.assertThat(component.getArticleTexts().get(3))
         .as("Check if the last article from the parent path is displayed")
-        .matches("^Cancellations(.*|\\n)*processing$");
+        .matches("^Product Purchase Locations(.*|\\n)*processing$");
     softly.assertAll();
   }
 
