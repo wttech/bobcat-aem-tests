@@ -1,0 +1,7 @@
+About:
+- label: Help Message
+  type: TEXTFIELD
+  value: The help message
+- label: Display help message as placeholder
+  type: CHECKBOX
+  value: true

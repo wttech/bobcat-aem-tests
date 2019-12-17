@@ -1,0 +1,13 @@
+Properties:
+- label: Type
+  type: SELECT
+  value: Submit
+- label: Title
+  type: TEXTFIELD
+  value: The title
+- label: Name
+  type: TEXTFIELD
+  value: The name
+- label: Value
+  type: TEXTFIELD
+  value: The value

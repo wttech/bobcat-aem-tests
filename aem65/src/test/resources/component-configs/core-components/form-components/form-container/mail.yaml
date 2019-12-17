@@ -1,0 +1,31 @@
+Properties:
+- label: Action Type
+  type: SELECT
+  value: Mail
+- label: Subject *
+  type: TEXTFIELD
+  value: The subject
+- label: From *
+  type: TEXTFIELD
+  value: From Yours Truly
+- label: CC
+  type: MULTIFIELD
+  value:
+  - item:
+    - type: TEXTFIELD
+      value: Co-workers
+  - item:
+    - type: TEXTFIELD
+      value: Strangers
+- label: To *
+  type: MULTIFIELD
+  value:
+  - item:
+    - type: TEXTFIELD
+      value: Family
+  - item:
+    - type: TEXTFIELD
+      value: Friends
+- label: Thank You Page
+  type: PATHBROWSER
+  value: /content/core-components-examples/library/button

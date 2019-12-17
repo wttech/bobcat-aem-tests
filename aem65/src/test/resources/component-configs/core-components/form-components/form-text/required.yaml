@@ -1,0 +1,10 @@
+Constraints:
+- label: Required
+  type: CHECKBOX
+  value: true
+- label: Required Message
+  type: TEXTFIELD
+  value: The required message
+- label: Constraint Message
+  type: TEXTFIELD
+  value: The constraint message
