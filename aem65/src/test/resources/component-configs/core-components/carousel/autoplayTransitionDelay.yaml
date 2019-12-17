@@ -1,0 +1,4 @@
+Properties:
+  - label: Transition Delay (milliseconds)
+    type: TEXTFIELD
+    value: 1000

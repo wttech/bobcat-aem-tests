@@ -1,0 +1,4 @@
+Accessibility:
+  - label: Label
+    type: TEXTFIELD
+    value: Accessibility test label text
